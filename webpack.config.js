@@ -1,8 +1,8 @@
 module.exports = {
-	entry:["./resource/javascript/163redux/index.js"],
+	entry:["./src/js/test1.js"],
 	output:{
 		path:__dirname,
-		filename:"./resource/javascript/163redux/index-compiled.js"
+		filename:"./src/js/test1-compiled.js"
 	},
 	module:{
 		loaders:[

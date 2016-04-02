@@ -13,4 +13,6 @@
 	console.log(...ary);
 	let {name: n, age: a, sex: s} = o;
 	console.log(n,a,s);
+	console.log(` fuck you ${o} `)
 }
+var css = require('../css/1.css');
