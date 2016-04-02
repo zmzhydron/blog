@@ -1,0 +1,24 @@
+module.exports = {
+	entry:["./resource/javascript/163redux/index.js"],
+	output:{
+		path:__dirname,
+		filename:"./resource/javascript/163redux/index-compiled.js"
+	},
+	module:{
+		loaders:[
+			{
+				test:/\.css$/,
+				loader:"style!css"
+			},
+			{
+				test:/\.js$/,
+				loader:"babel-loader",
+				exclude:/node_modules/,
+				query:{
+					presets:['es2015','react']
+				}
+			}
+		]
+	},
+	resolve:['','.js','.css','.less','.json']
+}
