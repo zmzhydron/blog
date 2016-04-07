@@ -2,6 +2,7 @@
 
 import React from "react";
 import ReactDom from "react-dom";
+import Todo from "./todo.js";
 const appHtml = document.getElementById('app');
 
 
@@ -11,18 +12,22 @@ var obj = {ary,name}
 class App extends React.Component{
 	constructor(){
 		super();
-	}	
+	}
 	render(){
 		var { name,ary:arrays} = this.props.data;
 		var aryString = arrays.map((item,index) =>{
-			return <p key={index}>{item}</p>;
+			return <p data = {item} key = {index}>{item}</p>;
 		})
-		console.log(aryString);
-		console.log("@@@@@@@@@@");
+		var asdf = arrays.map((item,index) =>{
+			return <Todo data = {item} key = {index}/>;
+		})
+		// console.log(asdf);
+		console.log("@@@@@2@@@@@1");
 		return (
 			<div>
 				<h1>{name}</h1>
-				{aryString}
+				<Todo data = {'zmz'}/>
+				{ asdf }
 			</div>
 		)
 	}
