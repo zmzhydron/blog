@@ -97,18 +97,9 @@
 				var name = _props$data.name;
 				var arrays = _props$data.ary;
 
-				var aryString = arrays.map(function (item, index) {
-					return _react2.default.createElement(
-						"p",
-						{ data: item, key: index },
-						item
-					);
-				});
-				var asdf = arrays.map(function (item, index) {
+				var todoList = arrays.map(function (item, index) {
 					return _react2.default.createElement(_todo2.default, { data: item, key: index });
 				});
-				// console.log(asdf);
-				console.log("@@@@@2@@@@@1");
 				return _react2.default.createElement(
 					"div",
 					null,
@@ -117,8 +108,7 @@
 						null,
 						name
 					),
-					_react2.default.createElement(_todo2.default, { data: 'zmz' }),
-					asdf
+					todoList
 				);
 			}
 		}]);

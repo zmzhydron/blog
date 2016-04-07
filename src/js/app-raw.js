@@ -15,19 +15,13 @@ class App extends React.Component{
 	}
 	render(){
 		var { name,ary:arrays} = this.props.data;
-		var aryString = arrays.map((item,index) =>{
-			return <p data = {item} key = {index}>{item}</p>;
-		})
-		var asdf = arrays.map((item,index) =>{
+		var todoList = arrays.map((item,index) =>{
 			return <Todo data = {item} key = {index}/>;
 		})
-		// console.log(asdf);
-		console.log("@@@@@2@@@@@1");
 		return (
 			<div>
 				<h1>{name}</h1>
-				<Todo data = {'zmz'}/>
-				{ asdf }
+				{ todoList }
 			</div>
 		)
 	}
