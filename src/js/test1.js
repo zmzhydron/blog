@@ -13,6 +13,9 @@
 	console.log(...ary);
 	let {name: n, age: a, sex: s} = o;
 	console.log(n,a,s);
-	console.log(` fuck you ${o} `)
+	console.log(` fuck you ${o} `);
+	// var bbb = ary.map((item) =>{
+	// 	return item +" fuck you";
+	// })
+	// console.log(bbb);
 }
-var css = require('../css/1.css');
