@@ -77,7 +77,7 @@
 
 	var appHtml = document.getElementById('app');
 
-	var ary = [123, 5, 456, 2, 123, 5, 45, 3, 123, 5, 456, 3456345, 234];
+	var ary = [123, 5, 456, 2, 123, 5, 45, 3, 123, 5, 456, 34563415, 234];
 	var name = 'zhangmingzhi';
 	var obj = { ary: ary, name: name };
 
