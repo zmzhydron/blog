@@ -6,7 +6,7 @@ import Todo from "./todo.js";
 const appHtml = document.getElementById('app');
 
 
-var ary = [123,5,456,2,123,5,45,3,123,5,456,34563415,2134];
+var ary = [123,5,456,2,123,5,45,3,123,5,456,34563415,21134];
 let name = 'zhangmingzhi';
 var obj = {ary,name}
 class App extends React.Component{
