@@ -4,16 +4,32 @@ import React from "react";
 export default class todo extends React.Component{
     constructor(){
         super();
-        console.log("@@@@@@@@")
     }
     componentWillMount(){
-        console.log('~~~~~~~~~');
+        
+    }
+    delete(){
+        this.props.functions.delete(this.index);
+    }
+    check(){
+        this.props.functions.check(this.index,!this.compiled);
+    }
+    funny(){
+        
     }
     render(){
-        // var { name } = this.props.data;
-        // var { index } = this.props.index;
+        var {data: {title,compiled,info},index} = this.props;
+        this.index = index;
+        this.compiled = compiled;
         return (
-            <p>{ this.props.data }</p>
+            <div>  
+                <div>
+                    <p>title: {title} <input type="checkbox" onChange = {this.check.bind(this)} checked={compiled}/></p>
+                    <p>info: {info}</p>
+                </div>
+                <button onClick={this.delete.bind(this)}>delete</button>
+                <button onClick={this.check.bind(this)}>check</button>
+            </div>
         )
     }
 }

@@ -53,6 +53,8 @@
 
 	'use strict';
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
@@ -75,37 +77,107 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 	var appHtml = document.getElementById('app');
 
-	var ary = [123, 5, 456, 2, 123, 5, 45, 3, 123, 5, 456, 34563415, 21134];
+	var todoJSON = [{
+		title: "买牛奶",
+		compiled: true,
+		info: "伊利的"
+	}, {
+		title: "给娃娃洗澡",
+		compiled: false,
+		info: "不要把水流进耳朵"
+	}, {
+		title: "工作",
+		compiled: false,
+		info: "努力"
+	}, {
+		title: "学习react",
+		compiled: false,
+		info: "redux，模块化"
+	}, {
+		title: "学习css3",
+		compiled: false,
+		info: "tranfrom"
+	}, {
+		title: "用css做一个人物画像",
+		compiled: false,
+		info: ""
+	}, {
+		title: "学习移动端",
+		compiled: false,
+		info: "比如react navtive"
+	}, {
+		title: "用reactnavtive做一个app",
+		compiled: false,
+		info: "目前做android的"
+	}];
 	var name = 'zhangmingzhi';
-	var obj = { ary: ary, name: name };
+	var obj = { todoJSON: todoJSON, name: name };
+	var somepros = { name: 'zmz', fontSize: 27, address: 'chengdu' };
+	var shabi = somepros.name;
+
+	var rest = _objectWithoutProperties(somepros, ["name"]);
 
 	var App = function (_React$Component) {
 		_inherits(App, _React$Component);
 
-		function App() {
+		function App(props) {
 			_classCallCheck(this, App);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this));
+
+			_this.state = props;
+			return _this;
 		}
 
 		_createClass(App, [{
+			key: "check",
+			value: function check(index, state) {
+				console.log("this is check", index);
+				var temp = this.state.data;
+				var that = this;
+				temp.todoJSON[index].compiled = state;
+				this.setState({ data: Object.assign(that.state.data, temp) });
+			}
+		}, {
+			key: "delete",
+			value: function _delete(index) {
+				console.log(this);
+				var temp = this.state.data;
+				temp.todoJSON.splice(index, 1);
+				var that = this;
+
+				this.setState({ data: Object.assign(that.state.data, temp) });
+			}
+		}, {
+			key: "changeText",
+			value: function changeText() {}
+		}, {
 			key: "render",
 			value: function render() {
-				var _props$data = this.props.data;
-				var name = _props$data.name;
-				var arrays = _props$data.ary;
+				var _state = this.state;
+				var data = _state.data;
+				var _state$data = _state.data;
+				var name = _state$data.name;
+				var todoJSON = _state$data.todoJSON;
 
-				var todoList = arrays.map(function (item, index) {
-					return _react2.default.createElement(_todo2.default, { data: item, key: index });
+				var reset = _objectWithoutProperties(_state, ["data", "data"]);
+
+				var functions = { check: this.check.bind(this), delete: this.delete.bind(this), hehe: 1234 };
+				this.data = data;
+				console.log(this.state, 11);
+				var todoList = todoJSON.map(function (item, index) {
+					return _react2.default.createElement(_todo2.default, { index: index, data: item, functions: functions, key: index });
 				});
 				return _react2.default.createElement(
 					"div",
 					null,
 					_react2.default.createElement(
 						"h1",
-						null,
+						reset,
 						name
 					),
 					todoList
@@ -116,7 +188,7 @@
 		return App;
 	}(_react2.default.Component);
 
-	_reactDom2.default.render(_react2.default.createElement(App, { data: obj }), appHtml);
+	_reactDom2.default.render(_react2.default.createElement(App, _extends({ data: obj }, somepros)), appHtml);
 
 /***/ },
 /* 2 */
@@ -19753,26 +19825,68 @@
 	    function todo() {
 	        _classCallCheck(this, todo);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(todo).call(this));
-
-	        console.log("@@@@@@@@");
-	        return _this;
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(todo).call(this));
 	    }
 
 	    _createClass(todo, [{
 	        key: "componentWillMount",
-	        value: function componentWillMount() {
-	            console.log('~~~~~~~~~');
+	        value: function componentWillMount() {}
+	    }, {
+	        key: "delete",
+	        value: function _delete() {
+	            this.props.functions.delete(this.index);
 	        }
+	    }, {
+	        key: "check",
+	        value: function check() {
+	            this.props.functions.check(this.index, !this.compiled);
+	        }
+	    }, {
+	        key: "funny",
+	        value: function funny() {}
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            // var { name } = this.props.data;
-	            // var { index } = this.props.index;
+	            var _props = this.props;
+	            var _props$data = _props.data;
+	            var title = _props$data.title;
+	            var compiled = _props$data.compiled;
+	            var info = _props$data.info;
+	            var index = _props.index;
+
+	            this.index = index;
+	            this.compiled = compiled;
 	            return _react2.default.createElement(
-	                "p",
+	                "div",
 	                null,
-	                this.props.data
+	                _react2.default.createElement(
+	                    "div",
+	                    null,
+	                    _react2.default.createElement(
+	                        "p",
+	                        null,
+	                        "title: ",
+	                        title,
+	                        " ",
+	                        _react2.default.createElement("input", { type: "checkbox", onChange: this.check.bind(this), checked: compiled })
+	                    ),
+	                    _react2.default.createElement(
+	                        "p",
+	                        null,
+	                        "info: ",
+	                        info
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "button",
+	                    { onClick: this.delete.bind(this) },
+	                    "delete"
+	                ),
+	                _react2.default.createElement(
+	                    "button",
+	                    { onClick: this.check.bind(this) },
+	                    "check"
+	                )
 	            );
 	        }
 	    }]);

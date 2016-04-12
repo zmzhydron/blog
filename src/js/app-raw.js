@@ -6,25 +6,91 @@ import Todo from "./todo.js";
 const appHtml = document.getElementById('app');
 
 
-var ary = [123,5,456,2,123,5,45,3,123,5,456,34563415,21134];
+var todoJSON = [
+	{
+		title: "买牛奶",
+		compiled: true,
+		info: "伊利的"
+	},
+	{
+		title: "给娃娃洗澡",
+		compiled: false,
+		info: "不要把水流进耳朵"
+	},
+	{
+		title: "工作",
+		compiled: false,
+		info: "努力"
+	},
+	{
+		title: "学习react",
+		compiled: false,
+		info: "redux，模块化"
+	},
+	{
+		title: "学习css3",
+		compiled: false,
+		info: "tranfrom"
+	},
+	{
+		title: "用css做一个人物画像",
+		compiled: false,
+		info: ""
+	},
+	{
+		title: "学习移动端",
+		compiled: false,
+		info: "比如react navtive"
+	},
+	{
+		title: "用reactnavtive做一个app",
+		compiled: false,
+		info: "目前做android的"
+	}
+];
 let name = 'zhangmingzhi';
-var obj = {ary,name}
+var obj = {todoJSON,name};
+var somepros = {name:'zmz',fontSize:27,address:'chengdu'};
+var {name:shabi,...rest} = somepros;
+
 class App extends React.Component{
-	constructor(){
+	constructor(props){
 		super();
+		this.state = props;
+	}
+	check(index,state){
+		console.log("this is check",index);
+		var temp = this.state.data;
+		var that = this;
+		temp.todoJSON[index].compiled = state;
+		this.setState({data:Object.assign(that.state.data,temp)});
+	}
+	delete(index){
+		console.log(this);
+		var temp = this.state.data;
+		temp.todoJSON.splice(index,1);
+		var that = this;
+
+		this.setState({data:Object.assign(that.state.data,temp)});
+	}
+	changeText(){
+		
 	}
 	render(){
-		var { name,ary:arrays} = this.props.data;
-		var todoList = arrays.map((item,index) =>{
-			return <Todo data = {item} key = {index}/>;
+		var {data,data: {name,todoJSON:todoJSON},...reset} = this.state;
+		var functions = {check:this.check.bind(this),delete:this.delete.bind(this),hehe:1234};
+		this.data = data;
+		console.log(this.state,11);
+		var todoList = todoJSON.map((item,index) =>{
+			return <Todo index = {index} data = {item} functions = {functions} key = {index}/>;
 		})
 		return (
 			<div>
-				<h1>{name}</h1>
+				<h1 {...reset} >{name}</h1>
 				{ todoList }
 			</div>
 		)
 	}
 }
 
-ReactDom.render(<App data={obj} />,appHtml);
+ReactDom.render(<App data={obj} {...somepros} />,appHtml);
