@@ -74,7 +74,7 @@ class App extends React.Component{
 		this.setState({data:Object.assign(that.state.data,temp)});
 	}
 	changeText(){
-		
+
 	}
 	render(){
 		var {data,data: {name,todoJSON:todoJSON},...reset} = this.state;
