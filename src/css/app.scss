@@ -37,6 +37,9 @@
 		@include border(green,5px,solid);
 		display:none;
 	}
+	.editTodo.active{
+		display:block;
+	}
 }
 #deleteBtn{
 	order:2;

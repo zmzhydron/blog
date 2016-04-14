@@ -38,6 +38,9 @@
   border-radius: 5px;
   display: none;
 }
+.todoItem .editTodo.active {
+  display: block;
+}
 
 #deleteBtn {
   order: 2;

@@ -2,11 +2,9 @@
 import React from "react";
 
 export default class todo extends React.Component{
-    constructor(){
+    constructor(props){
         super();
-        // this.state = {
-        //     editActive: false
-        // }
+        // this.state = props;
         this.isClassActive = false;
     }
     componentWillMount(){
@@ -24,28 +22,34 @@ export default class todo extends React.Component{
             deleteBtn = this.refs.deleteBtn,
             checkBtn = this.refs.checkBtn,
             todoItem = this.refs.todoItem,
-            title= this.refs.title,
+            title = this.refs.title,
             info = this.refs.info;
         if(!this.isClassActive){
-            className += 'editTodo active';
+            className = 'editTodo active';
             checkBtn.setAttribute('disabled',"disabled");
             deleteBtn.setAttribute('disabled',"disabled");
             this.isClassActive = true;
-            title.value = this.title;
             info.value = this.info;
+            title.value = this.title;
         }else{
             deleteBtn.removeAttribute('disabled');
             checkBtn.removeAttribute('disabled');
             this.isClassActive = false;
-
             this.props.functions.update(this.index,title.value,info.value);
         }
         editContainer.className = className;
     }
-    update(title,info){
+    onTitleChange(e){
+        this.title = e.target.value;
+        // this.setState({data: Object.assign({},this.state.data,{title:e.target.value})})
+    }
+    onInfoChange(e){
+        this.info = e.target.value;
+        // this.setState({data: Object.assign({},this.state.data,{info:e.target.value})})
     }
     render(){
         var {data: {title,compiled,info},index} = this.props;
+        // var {data: {title,compiled,info},index} = this.state;
         this.index = index;
         this.compiled = compiled;
         this.title = title;

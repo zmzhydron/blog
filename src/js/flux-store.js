@@ -57,6 +57,7 @@ class Store extends EventEmitter{
 	}
 	deletefn(val){
 		todoJSON.splice(val,1);
+		console.log(todoJSON,val);
 	}
 	update(index,title,info){
 		todoJSON[index].title = title;
