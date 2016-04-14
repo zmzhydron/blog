@@ -9,8 +9,6 @@
 	}
 	var b = o;
 	b.asd[0].name = 'zmz';
-	var oo = Object.assign(o,{
-		
-	});
+	var oo = Object.assign(o.asd,[{name:" loop"}]);
 	console.log(oo);
 }

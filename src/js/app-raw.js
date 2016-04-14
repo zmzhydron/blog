@@ -3,84 +3,56 @@
 import React from "react";
 import ReactDom from "react-dom";
 import Todo from "./todo.js";
+import Store from './flux-store.js';
+import Actions from "./flux-actions.js";
+
 const appHtml = document.getElementById('app');
-
-
-var todoJSON = [
-	{
-		title: "买牛奶",
-		compiled: true,
-		info: "伊利的"
-	},
-	{
-		title: "给娃娃洗澡",
-		compiled: false,
-		info: "不要把水流进耳朵"
-	},
-	{
-		title: "工作",
-		compiled: false,
-		info: "努力"
-	},
-	{
-		title: "学习react",
-		compiled: false,
-		info: "redux，模块化"
-	},
-	{
-		title: "学习css3",
-		compiled: false,
-		info: "tranfrom"
-	},
-	{
-		title: "用css做一个人物画像",
-		compiled: false,
-		info: ""
-	},
-	{
-		title: "学习移动端",
-		compiled: false,
-		info: "比如react navtive"
-	},
-	{
-		title: "用reactnavtive做一个app",
-		compiled: false,
-		info: "目前做android的"
-	}
-];
 let name = 'zhangmingzhi';
-var obj = {todoJSON,name};
+var obj = {name};
 var somepros = {name:'zmz',fontSize:27,address:'chengdu'};
 var {name:shabi,...rest} = somepros;
 
 class App extends React.Component{
 	constructor(props){
 		super();
-		this.state = props;
+		this.state = Object.assign({},props,{todoJSON: Store.getAllTodos()});
+		// this.state = props;
+	}
+	componentWillMount(){
+		// this.setState({todoJSON:Store.getAllTodos()})
+		Store.register('CHECKTODO',this.checkCallBack.bind(this));
+		Store.register('DELETETODO',this.deleteCallBack.bind(this));
+		Store.register('DELETETODO',this.deleteCallBack.bind(this));
+	}
+	componentDidMount(){
+
 	}
 	check(index,state){
-		console.log("this is check",index);
-		var temp = this.state.data;
-		var that = this;
-		temp.todoJSON[index].compiled = state;
-		this.setState({data:Object.assign(that.state.data,temp)});
+		Actions.CHECKTODO(index);
 	}
 	delete(index){
-		console.log(this);
-		var temp = this.state.data;
-		temp.todoJSON.splice(index,1);
-		var that = this;
-
-		this.setState({data:Object.assign(that.state.data,temp)});
+		Actions.DELETETODO(index);
 	}
-	changeText(){
-
+	deleteCallBack(){
+		this.setState({todoJSON: Store.getAllTodos()})
+	}
+	checkCallBack(){
+		this.setState({todoJSON: Store.getAllTodos()})
+	}
+	updateCallBack(){
+		this.setState({todoJSON: Store.getAllTodos()})
+	}
+	update(index,title,info){
+		Actions.UPDATETODO(index,title,info);
 	}
 	render(){
-		var {data,data: {name,todoJSON:todoJSON},...reset} = this.state;
-		var functions = {check:this.check.bind(this),delete:this.delete.bind(this),hehe:1234};
+		var {data,todoJSON:todoJSON,data: {name},...reset} = this.state;
+		var functions = {
+			check:this.check.bind(this),
+			update: this.update.bind(this),
+			delete:this.delete.bind(this)
+		};
 		this.data = data;
-		console.log(this.state,11);
 		var todoList = todoJSON.map((item,index) =>{
 			return <Todo index = {index} data = {item} functions = {functions} key = {index}/>;
 		})

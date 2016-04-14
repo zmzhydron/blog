@@ -1,0 +1,49 @@
+@mixin border($color:lime,$width:2px,$style:dashed){
+	border:$style $width $color;
+	border-radius:5px;
+}
+.todoItem{
+	display:flex;
+	width:999px;
+	color:gray;
+	justify-content:space-around;
+	@include border();
+	.todoContent{
+		width:500px;
+		@include border(orange);
+	}
+	.todoControl{
+		button{
+			height:25px;
+			width:51px;
+		}
+		button:nth-child(1){
+			color:green;
+		}
+		button:nth-child(2){
+			color:purple;
+		}
+		button:nth-child(3){
+			color:red;
+		}
+		display:flex;
+		flex-flow:column wrap;
+		justify-content:space-around;
+		align-items:center;
+		width:150px;
+		@include border(black,2px,solid);
+	}
+	.editTodo{
+		@include border(green,5px,solid);
+		display:none;
+	}
+}
+#deleteBtn{
+	order:2;
+}
+#checkBtn{
+	order:1;
+}
+#editBtn{
+	order:0;
+}

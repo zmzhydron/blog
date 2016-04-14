@@ -1,0 +1,54 @@
+.todoItem {
+  display: flex;
+  width: 999px;
+  color: gray;
+  justify-content: space-around;
+  border: dashed 2px lime;
+  border-radius: 5px;
+}
+.todoItem .todoContent {
+  width: 500px;
+  border: dashed 2px orange;
+  border-radius: 5px;
+}
+.todoItem .todoControl {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 150px;
+  border: solid 2px black;
+  border-radius: 5px;
+}
+.todoItem .todoControl button {
+  height: 25px;
+  width: 51px;
+}
+.todoItem .todoControl button:nth-child(1) {
+  color: green;
+}
+.todoItem .todoControl button:nth-child(2) {
+  color: purple;
+}
+.todoItem .todoControl button:nth-child(3) {
+  color: red;
+}
+.todoItem .editTodo {
+  border: solid 5px green;
+  border-radius: 5px;
+  display: none;
+}
+
+#deleteBtn {
+  order: 2;
+}
+
+#checkBtn {
+  order: 1;
+}
+
+#editBtn {
+  order: 0;
+}
+
+/*# sourceMappingURL=app.css.map */
