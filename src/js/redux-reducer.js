@@ -44,24 +44,23 @@ var todoJSON = [
 ];
 
 
-export default function TodoReducer(state = {todoJSON: todoJSON},action){
+function TodoReducer(state = todoJSON,action){
     console.log(action);
     switch (action.type) {
         case "DELETETODO":
-            state.todoJSON.splice(action.index,1);
-            console.log(state);
+            state.splice(action.index,1);
             return state;
         break;
         case "CHECKTODO":
-            var ck = state.todoJSON[action.index].compiled;
-            return Object.assign({},state,{todoJSON: [...state.todoJSON.slice(0,action.index),
-            Object.assign({},state.todoJSON[action.index],{compiled:!ck}),
-            ...state.todoJSON.slice(action.index + 1)]});
+            var ck = state[action.index].compiled;
+            return [...state.slice(0,action.index),
+            Object.assign({},state[action.index],{compiled:!ck}),
+            ...state.slice(action.index + 1)];
         break;
         case "UPDATETODO":
-            return Object.assign({},state,{todoJSON: [...state.todoJSON.slice(0,action.index),
-            Object.assign({},state.todoJSON[action.index],action),
-            ...state.todoJSON.slice(action.index + 1)]});
+            return [...state.slice(0,action.index),
+            Object.assign({},state[action.index],action),
+            ...state.slice(action.index + 1)];
         break;
         default:
         return state;
@@ -69,3 +68,6 @@ export default function TodoReducer(state = {todoJSON: todoJSON},action){
 
     }
 }
+export default combineReducers({
+    todoJSON: TodoReducer
+})
