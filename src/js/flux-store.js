@@ -52,16 +52,14 @@ class Store extends EventEmitter{
 	}
 	check(val){
 		var ck = todoJSON[val].compiled;
-		console.log(ck);
 		todoJSON[val].compiled = !ck;
 	}
 	deletefn(val){
 		todoJSON.splice(val,1);
-		console.log(todoJSON,val);
 	}
-	update(index,title,info){
-		todoJSON[index].title = title;
-		todoJSON[index].info = info;
+	update(index,data){
+		console.log(todoJSON[index],data);
+		todoJSON[index] = data;
 	}
 	fire(action,val){
 		this.emit(action.type,val);

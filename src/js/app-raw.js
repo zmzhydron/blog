@@ -3,8 +3,14 @@
 import React from "react";
 import ReactDom from "react-dom";
 import Todo from "./todo.js";
-import Store from './flux-store.js';
-import Actions from "./flux-actions.js";
+// import Store from './flux-store.js';
+// import Actions from "./flux-actions.js";
+import Actions from "./redux-actions.js";
+import { createStore } from 'redux';
+import TodoReducer from './redux-reducer.js';
+import { Provider } from "react-redux";
+
+var store = createStore(TodoReducer);
 
 const appHtml = document.getElementById('app');
 let name = 'zhangmingzhi';
@@ -15,54 +21,67 @@ var {name:shabi,...rest} = somepros;
 class App extends React.Component{
 	constructor(props){
 		super();
-		this.state = Object.assign({},props,{todoJSON: Store.getAllTodos()});
-		// this.state = props;
+		// this.state = Object.assign({},props,{todoJSON: Store.getAllTodos()});
+		this.state = store.getState();
+
 	}
 	componentWillMount(){
-		// this.setState({todoJSON:Store.getAllTodos()})
-		Store.register('CHECKTODO',this.checkCallBack.bind(this));
-		Store.register('DELETETODO',this.deleteCallBack.bind(this));
-		Store.register('DELETETODO',this.deleteCallBack.bind(this));
+		console.log("###");
+		store.subscribe(()=>{
+			this.setState({
+				todoJSON: store.getState().todoJSON
+			})
+		})
+		// Store.register('CHECKTODO',this.checkCallBack.bind(this));
+		// Store.register('DELETETODO',this.deleteCallBack.bind(this));
+		// Store.register('UPDATETODO',this.updateCallBack.bind(this));
 	}
+	componentWillReciveProps(newProps){
+		console.log(newProps);
+}
 	componentDidMount(){
 
 	}
 	check(index,state){
-		Actions.CHECKTODO(index);
+		// Actions.CHECKTODO(index);
+		store.dispatch(Actions.CHECKTODO(index));
 	}
 	delete(index){
-		Actions.DELETETODO(index);
+		// Actions.DELETETODO(index);
+		store.dispatch(Actions.DELETETODO(index));
 	}
-	deleteCallBack(){
-		this.setState({todoJSON: Store.getAllTodos()})
+	update(index,data){
+		// Actions.UPDATETODO(index,title,info);
+		store.dispatch(Actions.UPDATETODO(index,data));
 	}
-	checkCallBack(){
-		this.setState({todoJSON: Store.getAllTodos()})
-	}
-	updateCallBack(){
-		this.setState({todoJSON: Store.getAllTodos()})
-	}
-	update(index,title,info){
-		Actions.UPDATETODO(index,title,info);
-	}
+	// deleteCallBack(){
+	// 	// console.log(Store.getAllTodos());
+	// 	this.setState({todoJSON: Store.getAllTodos()})
+	// }
+	// checkCallBack(){
+	// 	this.setState({todoJSON: Store.getAllTodos()})
+	// }
+	// updateCallBack(){
+	// 	this.setState({todoJSON: Store.getAllTodos()})
+	// }
 	render(){
-		var {data,todoJSON:todoJSON,data: {name},...reset} = this.state;
+		var {todoJSON:todoJSON} = this.state;
 		var functions = {
 			check:this.check.bind(this),
 			update: this.update.bind(this),
 			delete:this.delete.bind(this)
 		};
-		this.data = data;
+		var name = "zhangmingzhi";
 		var todoList = todoJSON.map((item,index) =>{
 			return <Todo index = {index} data = {item} functions = {functions} key = {index}/>;
 		})
 		return (
 			<div>
-				<h1 {...reset} >{name}</h1>
+				<h1>{name}</h1>
 				{ todoList }
 			</div>
 		)
 	}
 }
 
-ReactDom.render(<App data={obj} {...somepros} />,appHtml);
+ReactDom.render(<Provider store = {store}><App/></Provider>,appHtml);
