@@ -5,25 +5,20 @@ import ReactDom from "react-dom";
 import Todo from "./todo.js";
 // import Store from './flux-store.js';
 // import Actions from "./flux-actions.js";
-import Actions from "./redux-actions.js";
+import * as Actions from "./redux-actions.js";
 import { createStore } from 'redux';
 import TodoReducer from './redux-reducer.js';
 import { Provider } from "react-redux";
 
 var store = createStore(TodoReducer);
-
+// load css
+import css from "./../css/app.scss";
 const appHtml = document.getElementById('app');
-let name = 'zhangmingzhi';
-var obj = {name};
-var somepros = {name:'zmz',fontSize:27,address:'chengdu'};
-var {name:shabi,...rest} = somepros;
-
 class App extends React.Component{
 	constructor(props){
 		super();
 		// this.state = Object.assign({},props,{todoJSON: Store.getAllTodos()});
 		this.state = store.getState();
-
 	}
 	componentWillMount(){
 		console.log("###");
@@ -52,7 +47,11 @@ class App extends React.Component{
 	}
 	update(index,data){
 		// Actions.UPDATETODO(index,title,info);
+		console.log(data);
 		store.dispatch(Actions.UPDATETODO(index,data));
+	}
+	filterTodo(e){
+		store.dispatch(Actions.FILTERTODO(e.target.value));
 	}
 	// deleteCallBack(){
 	// 	// console.log(Store.getAllTodos());
@@ -78,6 +77,9 @@ class App extends React.Component{
 		return (
 			<div>
 				<h1>{name}</h1>
+				<div className = "todofilters">
+				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
+				</div>
 				{ todoList }
 			</div>
 		)

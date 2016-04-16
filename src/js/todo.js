@@ -59,18 +59,19 @@ export default class todo extends React.Component{
     }
     render(){
         // var {data: {title,compiled,info},index} = this.props;
-        var {data: {title,compiled,info},index} = this.state;
+        var {data: {title,compiled,info,display},index} = this.state;
         this.index = index;
         this.compiled = compiled;
         var editTodoClass = this.isClassActive ?  "editTodo active" : "editTodo";
+        var todoClassName = "todoItem " + (display === 'block' ? 'flex' : display);
         console.log(editTodoClass);
         return (
-            <div className="todoItem" ref="todoItem">
+            <div className={ todoClassName } ref="todoItem">
                 <div className="todoContent">
                     <p>title: {title} <input type="checkbox" onChange = {this.check.bind(this)} checked={compiled}/></p>
                     <p>info: {info}</p>
                 </div>
-                <div className={editTodoClass} ref="editTodoCtn">
+                <div className = {editTodoClass} ref="editTodoCtn">
                     <p>title: <input value={title} onChange={this.onTitleChange.bind(this)} ref="title"/></p>
                     <p>info: <textarea value={info} onChange={this.onInfoChange.bind(this)} ref="info"></textarea></p>
                 </div>

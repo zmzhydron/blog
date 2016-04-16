@@ -1,22 +1,17 @@
 'use strict';
-
-export default {
-    DELETETODO: (index) =>{
-        return {
-            type: "DELETETODO",
-            index
-        }
-    },
-    CHECKTODO: (index) =>{
-        return {
-            type: "CHECKTODO",
-            index
-        }
-    },
-    UPDATETODO: (data) =>{
-        return {
-            type: "UPDATETODO",
-            data
-        }
+function createActions(actionType,...arg){
+    var obj = {type: actionType};
+    return function(){
+        arg.map((item,index) =>{
+            obj[item] = arguments[index];
+        });
+        console.log(obj);
+        return obj;
     }
 }
+
+var DELETETODO = createActions('DELETETODO','index');
+var CHECKTODO = createActions('CHECKTODO','index');
+var UPDATETODO = createActions('UPDATETODO','index','data');
+var FILTERTODO = createActions('FILTERTODO',"val");
+export { DELETETODO, CHECKTODO, UPDATETODO, FILTERTODO};

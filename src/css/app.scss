@@ -7,7 +7,7 @@
 	width:999px;
 	color:gray;
 	justify-content:space-around;
-	@include border();
+	@include border($color:red);
 	.todoContent{
 		width:500px;
 		@include border(orange);
@@ -40,6 +40,12 @@
 	.editTodo.active{
 		display:block;
 	}
+}
+.todoItem.flex{
+	display: flex;
+}
+.todoItem.none{
+	display: none;
 }
 #deleteBtn{
 	order:2;
