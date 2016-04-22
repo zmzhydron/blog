@@ -50,9 +50,9 @@ var todoJSON = [
 		display:"block"
 	}
 ];
-function createReducer(initialstate,fns){
-	return function(state = initialstate,action){
-		if(fns[action.type]){
+function createReducer(initialState,fns){
+	return function(state = initialState,action){
+		if(fns[action.type] && typeof fns[action.type] === 'function'){
 			return fns[action.type](state,action);
 		}else{
 			return state;
@@ -91,7 +91,7 @@ var TodoReducer = createReducer(todoJSON,{
 		return filtertodo;
 	},
 	ADDTODO: (state,action) => {
-		
+
 	}
 })
 export default combineReducers({
