@@ -2,7 +2,8 @@
 
 import React from "react";
 import ReactDom from "react-dom";
-import Todo from "./todo.js";
+import Todo from "./widgets/todo.js";
+import AddTodo from "./widgets/addTodo.js";
 // import Store from './flux-store.js';
 // import Actions from "./flux-actions.js";
 import * as Actions from "./redux-actions.js";
@@ -50,6 +51,10 @@ class App extends React.Component{
 		console.log(data);
 		store.dispatch(Actions.UPDATETODO(index,data));
 	}
+	add(data){
+		console.log('adding a todo');
+		store.dispatch(Actions.ADDTODO(data));
+	}
 	filterTodo(e){
 		store.dispatch(Actions.FILTERTODO(e.target.value));
 	}
@@ -80,6 +85,7 @@ class App extends React.Component{
 				<div className = "todofilters">
 				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
 				</div>
+				<AddTodo fun={this.add.bind(this)}/>
 				{ todoList }
 			</div>
 		)

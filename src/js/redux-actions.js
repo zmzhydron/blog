@@ -14,4 +14,5 @@ var DELETETODO = createActions('DELETETODO','index');
 var CHECKTODO = createActions('CHECKTODO','index');
 var UPDATETODO = createActions('UPDATETODO','index','data');
 var FILTERTODO = createActions('FILTERTODO',"val");
-export { DELETETODO, CHECKTODO, UPDATETODO, FILTERTODO};
+var ADDTODO = createActions("ADDTODO",'data');
+export { DELETETODO, CHECKTODO, UPDATETODO, FILTERTODO, ADDTODO};

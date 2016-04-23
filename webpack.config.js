@@ -8,11 +8,11 @@ module.exports = {
 		loaders:[
 			{
 				test:/\.css$/,
-				loader:['style','css']
+				loaders:['style','css']
 			},
 			{
 				test:/\.scss$/,
-				loader:['style','css','sass']
+				loaders:['style','css','sass']
 			},
 			{
 				test:/\.js$/,
