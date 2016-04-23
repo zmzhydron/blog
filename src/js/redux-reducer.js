@@ -92,9 +92,9 @@ var TodoReducer = createReducer(todoJSON,{
 	},
 	ADDTODO: (state,action) => {
 		var data = action.data;
-		console.log(data);
-		state.unshift(data);
-		return state;
+		// console.log(data);
+		// state.unshift(data);
+		return [data,...state];
 	}
 })
 export default combineReducers({
