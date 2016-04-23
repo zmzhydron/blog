@@ -34,7 +34,7 @@ class App extends React.Component{
 	}
 	componentWillReciveProps(newProps){
 		console.log(newProps);
-}
+	}
 	componentDidMount(){
 
 	}
