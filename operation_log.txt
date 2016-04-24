@@ -18,3 +18,62 @@ server is http://54.249.141.255:1127/post
 maximum 128 reports/day
 reporter is electron-crash-service
 [8276:8376:0423/201652:ERROR:crash_service.cc(301)] could not start dumper
+[3272:9892:0423/215507:VERBOSE1:crash_service.cc(331)] client end. pid = 7764
+[3272:9892:0423/215507:VERBOSE1:crash_service.cc(331)] client end. pid = 8628
+[3272:9892:0423/215508:VERBOSE1:crash_service.cc(352)] zero clients. exiting
+[3272:4268:0423/215508:VERBOSE1:crash_service.cc(490)] session ending..
+[3272:4268:0423/215508:VERBOSE1:crash_service.cc(495)] clients connected :2
+clients terminated :2
+dumps serviced :0
+dumps reported :0
+[3272:4268:0423/215508:VERBOSE1:crash_service_main.cc(89)] Session end. return code is 0
+[7956:7496:0424/195530:VERBOSE1:crash_service_main.cc(68)] Session start. cmdline is [--reporter-url=http://54.249.141.255:1127/post --application-name=Atom --v=1]
+[7956:7496:0424/195530:VERBOSE1:crash_service.cc(142)] window handle is 000F0B74
+[7956:7496:0424/195530:VERBOSE1:crash_service.cc(290)] pipe name is \\.\pipe\Atom Crash Service
+dumps at 
+[7956:7496:0424/195530:VERBOSE1:crash_service.cc(294)] checkpoint is crash_checkpoint.txt
+server is http://54.249.141.255:1127/post
+maximum 128 reports/day
+reporter is electron-crash-service
+[7956:7496:0424/195530:VERBOSE1:crash_service_main.cc(84)] Ready to process crash requests
+[7956:7504:0424/195530:VERBOSE1:crash_service.cc(323)] client start. pid = 5248
+[7956:7504:0424/195531:VERBOSE1:crash_service.cc(323)] client start. pid = 3232
+[6260:7776:0424/195531:VERBOSE1:crash_service_main.cc(68)] Session start. cmdline is [--reporter-url=http://54.249.141.255:1127/post --application-name=Atom --v=1]
+[6260:7776:0424/195531:VERBOSE1:crash_service.cc(142)] window handle is 001E0B94
+[6260:7776:0424/195531:VERBOSE1:crash_service.cc(290)] pipe name is \\.\pipe\Atom Crash Service
+dumps at 
+[6260:7776:0424/195531:VERBOSE1:crash_service.cc(294)] checkpoint is crash_checkpoint.txt
+server is http://54.249.141.255:1127/post
+maximum 128 reports/day
+reporter is electron-crash-service
+[6260:7776:0424/195531:ERROR:crash_service.cc(301)] could not start dumper
+[7956:7504:0424/203724:VERBOSE1:crash_service.cc(323)] client start. pid = 2188
+[7956:9240:0424/203724:VERBOSE1:crash_service.cc(331)] client end. pid = 2188
+[7956:7504:0424/203724:VERBOSE1:crash_service.cc(323)] client start. pid = 9808
+[9892:9560:0424/203724:VERBOSE1:crash_service_main.cc(68)] Session start. cmdline is [--reporter-url=http://54.249.141.255:1127/post --application-name=Atom --v=1]
+[9892:9560:0424/203724:VERBOSE1:crash_service.cc(142)] window handle is 0007064A
+[9892:9560:0424/203724:VERBOSE1:crash_service.cc(290)] pipe name is \\.\pipe\Atom Crash Service
+dumps at 
+[9892:9560:0424/203724:VERBOSE1:crash_service.cc(294)] checkpoint is crash_checkpoint.txt
+server is http://54.249.141.255:1127/post
+maximum 128 reports/day
+reporter is electron-crash-service
+[9892:9560:0424/203724:ERROR:crash_service.cc(301)] could not start dumper
+[7956:7504:0424/205420:VERBOSE1:crash_service.cc(394)] dump for pid = 5248 is \4294aae8-4f99-4afc-adc0-01fc060d5071.dmp
+[7956:10060:0424/205420:VERBOSE1:crash_service.cc(442)] trying to send report for pid = 5248
+[7956:9620:0424/205420:VERBOSE1:crash_service.cc(331)] client end. pid = 5248
+[7956:9620:0424/205421:VERBOSE1:crash_service.cc(331)] client end. pid = 3232
+[7956:7504:0424/205423:VERBOSE1:crash_service.cc(323)] client start. pid = 9588
+[7956:7504:0424/205423:VERBOSE1:crash_service.cc(323)] client start. pid = 1400
+[7956:10060:0424/205434:VERBOSE1:crash_service.cc(472)] dump for pid =5248 crash2 id =<network issue>
+[7956:7504:0424/210542:VERBOSE1:crash_service.cc(323)] client start. pid = 3656
+[7956:9760:0424/210542:VERBOSE1:crash_service.cc(331)] client end. pid = 3656
+[7956:7504:0424/210543:VERBOSE1:crash_service.cc(323)] client start. pid = 3308
+[7956:10060:0424/210934:VERBOSE1:crash_service.cc(442)] trying to send report for pid = 5248
+[7956:10060:0424/210935:VERBOSE1:crash_service.cc(472)] dump for pid =5248 crash2 id =<network issue>
+[7956:9760:0424/212530:VERBOSE1:crash_service.cc(331)] client end. pid = 9808
+[7956:7504:0424/212758:VERBOSE1:crash_service.cc(394)] dump for pid = 9588 is \07b48f89-db47-4c52-a1fc-b67e8d41bdf7.dmp
+[7956:9760:0424/212758:VERBOSE1:crash_service.cc(442)] trying to send report for pid = 9588
+[7956:2560:0424/212759:VERBOSE1:crash_service.cc(331)] client end. pid = 9588
+[7956:6008:0424/212759:VERBOSE1:crash_service.cc(331)] client end. pid = 1400
+[7956:9760:0424/212800:VERBOSE1:crash_service.cc(472)] dump for pid =9588 crash2 id =<network issue>

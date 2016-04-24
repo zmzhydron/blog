@@ -1,9 +1,11 @@
 'use strict'
-
 import React from "react";
 import ReactDom from "react-dom";
+import { Router, Route, IndexRoute, hashHistory, Link } from "react-router";
 import Todo from "./widgets/todo.js";
 import AddTodo from "./widgets/addTodo.js";
+import Calender from "./widgets/calender.js";
+import AD from "./widgets/AD.js";
 // import Store from './flux-store.js';
 // import Actions from "./flux-actions.js";
 import * as Actions from "./redux-actions.js";
@@ -36,7 +38,7 @@ class App extends React.Component{
 		console.log(newProps);
 	}
 	componentDidMount(){
-
+		console.log(` all my children!! : ${this.props.children} `);
 	}
 	check(index,state){
 		// Actions.CHECKTODO(index);
@@ -79,17 +81,41 @@ class App extends React.Component{
 		var todoList = todoJSON.map((item,index) =>{
 			return <Todo index = {index} data = {item} functions = {functions} key = {index}/>;
 		})
+		var child = {
+			title: "test child",
+			compiled: true,
+			info: "this.props.children",
+			display:"block"};
+		console.log(this);
+		var buttonStyle = {
+			color: "red",
+			fontSize: "36px"
+		}
+		var ADStyle = Object.assign({},buttonStyle,{color: "green"});
 		return (
 			<div>
-				<h1>{name}</h1>
+				<h1>{name} 
+					<Link to="calender"><button style={buttonStyle}>CALENDER</button></Link> 
+					<Link to="AD"><button style={ADStyle}>AD!!</button></Link>
+				</h1>
+				current router is : { this.props.children }
 				<div className = "todofilters">
 				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
 				</div>
-				<AddTodo fun={this.add.bind(this)}/>
+				<AddTodo fun={this.add.bind(this)}><Todo child={child}/></AddTodo>
 				{ todoList }
+
+
 			</div>
 		)
 	}
 }
 
-ReactDom.render(<Provider store = {store}><App/></Provider>,appHtml);
+ReactDom.render(
+	<Router history={hashHistory}>
+		<Route path="/" component={App}>
+			<Route path="calender" component={Calender} />
+			<Route path="AD" component={AD} />
+		</Route>
+	</Router>
+	,appHtml);

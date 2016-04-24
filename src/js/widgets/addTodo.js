@@ -20,7 +20,6 @@ export default class addTodo extends React.Component{
     }
     render(){
         var { fun: addFuns } = this.props;
-        console.log(addFuns);
         return (
             <div>
                 <h2>{name}</h2>
