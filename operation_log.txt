@@ -77,3 +77,13 @@ reporter is electron-crash-service
 [7956:2560:0424/212759:VERBOSE1:crash_service.cc(331)] client end. pid = 9588
 [7956:6008:0424/212759:VERBOSE1:crash_service.cc(331)] client end. pid = 1400
 [7956:9760:0424/212800:VERBOSE1:crash_service.cc(472)] dump for pid =9588 crash2 id =<network issue>
+[7956:9760:0424/214300:VERBOSE1:crash_service.cc(442)] trying to send report for pid = 9588
+[7956:9760:0424/214302:VERBOSE1:crash_service.cc(472)] dump for pid =9588 crash2 id =<network issue>
+[7956:8600:0424/220106:VERBOSE1:crash_service.cc(331)] client end. pid = 3308
+[7956:8600:0424/220107:VERBOSE1:crash_service.cc(352)] zero clients. exiting
+[7956:7496:0424/220107:VERBOSE1:crash_service.cc(490)] session ending..
+[7956:7496:0424/220107:VERBOSE1:crash_service.cc(495)] clients connected :8
+clients terminated :8
+dumps serviced :0
+dumps reported :0
+[7956:7496:0424/220107:VERBOSE1:crash_service_main.cc(89)] Session end. return code is 0

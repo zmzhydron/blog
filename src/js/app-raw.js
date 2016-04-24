@@ -97,6 +97,7 @@ class App extends React.Component{
 				<h1>{name} 
 					<Link to="calender"><button style={buttonStyle}>CALENDER</button></Link> 
 					<Link to="AD"><button style={ADStyle}>AD!!</button></Link>
+					<span>current </span>
 				</h1>
 				current router is : { this.props.children }
 				<div className = "todofilters">
@@ -114,8 +115,8 @@ class App extends React.Component{
 ReactDom.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={App}>
-			<Route path="calender" component={Calender} />
-			<Route path="AD" component={AD} />
+			<Route path="/calender" component={Calender} />
+			<Route path="/AD" component={AD} />
 		</Route>
 	</Router>
 	,appHtml);
