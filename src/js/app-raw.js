@@ -17,6 +17,11 @@ var store = createStore(TodoReducer);
 // load css
 import css from "./../css/app.scss";
 const appHtml = document.getElementById('app');
+window.onpopstate = function(e){
+	console.log(e);
+	console.log(window.history);
+	console.log(`@@@@@@@@@@@@@`)
+}
 class App extends React.Component{
 	constructor(props){
 		super();
@@ -24,7 +29,6 @@ class App extends React.Component{
 		this.state = store.getState();
 	}
 	componentWillMount(){
-		console.log("###");
 		store.subscribe(()=>{
 			this.setState({
 				todoJSON: store.getState().todoJSON
@@ -70,6 +74,22 @@ class App extends React.Component{
 	// updateCallBack(){
 	// 	this.setState({todoJSON: Store.getAllTodos()})
 	// }
+	setsasa(e){
+		var history = window.history;
+		console.log(history);
+		var type = e.target.getAttribute('data-id');
+		switch(type){
+			case "AD":
+				history.pushState({name: "AD"},"","#/" + type);
+			break;
+			case "calender":
+				history.pushState({name: "calender"},"","#/" + type);
+			break;
+		}
+	}
+	replaceState(e){
+		window.history.replaceState({name: "fuck that ass"},"daass!!","#/fuckthatass!!!");
+	}
 	render(){
 		var {todoJSON:todoJSON} = this.state;
 		var functions = {
@@ -95,8 +115,11 @@ class App extends React.Component{
 		return (
 			<div>
 				<h1>{name} 
-					<Link to="calender"><button style={buttonStyle}>CALENDER</button></Link> 
+					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link> 
 					<Link to="AD"><button style={ADStyle}>AD!!</button></Link>
+					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
+					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
+					<button onClick={this.replaceState.bind(this)}>replaceADTOCALENDER</button>
 					<span>current </span>
 				</h1>
 				current router is : { this.props.children }
