@@ -6,6 +6,7 @@ export default class todo extends React.Component{
         super();
         this.state = props;
         this.isClassActive = false;
+        this.isContentActive = false;
     }
     componentWillMount(){
         // console.log("componentWillMount");
@@ -57,28 +58,41 @@ export default class todo extends React.Component{
         this.info = e.target.value;
         this.setState({data: Object.assign({},this.state.data,{info:e.target.value})})
     }
+    expaded(e){
+        console.log(this.isContentActive);
+        if(this.isContentActive){
+            this.isContentActive = false;
+        }else{
+            this.isContentActive = true;
+        }
+        this.forceUpdate();
+    }
     render(){
         // var {data: {title,compiled,info},index} = this.props;
         var {data: {title,compiled,info,display},index} = this.state;
         this.index = index;
         this.compiled = compiled;
         var editTodoClass = this.isClassActive ?  "editTodo active" : "editTodo";
-        var todoClassName = "todoItem " + (display === 'block' ? 'flex' : display);
-        console.log(editTodoClass);
+        var todoClassName = "todoItem " + (display === 'block' ? 'block' : display);
+        var contentClass = "todoContent " + (this.isContentActive ? "active" : ""); 
         return (
             <div className={ todoClassName } ref="todoItem">
-                <div className="todoContent">
-                    <p>title: {title} <input type="checkbox" onChange = {this.check.bind(this)} checked={compiled}/></p>
-                    <p>info: {info}</p>
+                <div className="todoTitleCtn">
+                    <span className = "todoTitle" onClick= { this.expaded.bind(this) }>{title}</span>
+                    <span className = "todoTitleDelete" onClick={this.delete.bind(this)}>X</span>
+                     <input type="checkbox" onChange = {this.check.bind(this)} checked={compiled}/>
                 </div>
-                <div className = {editTodoClass} ref="editTodoCtn">
-                    <p>title: <input value={title} onChange={this.onTitleChange.bind(this)} ref="title"/></p>
-                    <p>info: <textarea value={info} onChange={this.onInfoChange.bind(this)} ref="info"></textarea></p>
-                </div>
-                <div className="todoControl">
-                    <button id="deleteBtn" ref="deleteBtn" onClick={this.delete.bind(this)}>delete</button>
-                    <button id="checkBtn" ref="checkBtn" onClick={this.check.bind(this)}>check</button>
-                    <button id="editBtn" onClick={this.edit.bind(this)}>edit</button>
+                <div className={ contentClass } ref="todoContent">
+                    <div className="todoInfo">{info}</div>
+                    <div className = {editTodoClass} ref="editTodoCtn">
+                        <p>title: <input value={title} onChange={this.onTitleChange.bind(this)} ref="title"/></p>
+                        <p>info: <textarea value={info} onChange={this.onInfoChange.bind(this)} ref="info"></textarea></p>
+                    </div>
+                    <div className="todoControl">
+                        <button id="deleteBtn" ref="deleteBtn" onClick={this.delete.bind(this)}>delete</button>
+                        <button id="checkBtn" ref="checkBtn" onClick={this.check.bind(this)}>check</button>
+                        <button id="editBtn" onClick={this.edit.bind(this)}>edit</button>
+                    </div>
                 </div>
             </div>
         )
