@@ -5,6 +5,15 @@
 @mixin underline($color:gray){
 	border-bottom:solid 1px $color
 }
+.todoListCtn{
+	width:1000px;
+	height:auto;
+	margin:10px;
+	padding:10px;
+	margin-left:20px;
+	box-shadow:5px 5px 5px 10px red,-5px -5px 5px 10px green;
+	box-shadow:0px 0px 10px red;
+}
 .todoItem{
 	display:block;
 	width:999px;

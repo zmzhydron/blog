@@ -1,8 +1,8 @@
 'use strict'
 import React from "react";
 import ReactDom from "react-dom";
-import { Router, Route, IndexRoute, hashHistory, Link } from "react-router";
-import Todo from "./widgets/todo.js";
+import { Router, Route, IndexRoute, hashHistory, Link, browserHistory } from "react-router";
+import Todos from "./widgets/todos.js";
 import AddTodo from "./widgets/addTodo.js";
 import Calender from "./widgets/calender.js";
 import AD from "./widgets/AD.js";
@@ -48,13 +48,15 @@ class App extends React.Component{
 		// Actions.CHECKTODO(index);
 		store.dispatch(Actions.CHECKTODO(index));
 	}
-	delete(index){
+	delete(index,todoObj){
 		// Actions.DELETETODO(index);
 		store.dispatch(Actions.DELETETODO(index));
+		//当删除了一个todo的时候，将其内容隐藏，并强制刷新 @2016-5-2；
+		todoObj.isContentActive = false;
+		todoObj.forceUpdate();
 	}
 	update(index,data){
 		// Actions.UPDATETODO(index,title,info);
-		console.log(data);
 		store.dispatch(Actions.UPDATETODO(index,data));
 	}
 	add(data){
@@ -98,15 +100,11 @@ class App extends React.Component{
 			delete:this.delete.bind(this)
 		};
 		var name = "zhangmingzhi";
-		var todoList = todoJSON.map((item,index) =>{
-			return <Todo index = {index} data = {item} functions = {functions} key = {index}/>;
-		})
 		var child = {
 			title: "test child",
 			compiled: true,
 			info: "this.props.children",
 			display:"block"};
-		console.log(this);
 		var buttonStyle = {
 			color: "red",
 			fontSize: "36px"
@@ -126,10 +124,8 @@ class App extends React.Component{
 				<div className = "todofilters">
 				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
 				</div>
-				<AddTodo fun={this.add.bind(this)}><Todo child={child}/></AddTodo>
-				{ todoList }
-
-
+				<AddTodo fun={this.add.bind(this)}/>
+				<Todos data = { todoJSON } fns = {functions}/>
 			</div>
 		)
 	}

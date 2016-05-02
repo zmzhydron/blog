@@ -5,7 +5,6 @@ function createActions(actionType,...arg){
         arg.map((item,index) =>{
             obj[item] = arguments[index];
         });
-        console.log(obj);
         return obj;
     }
 }

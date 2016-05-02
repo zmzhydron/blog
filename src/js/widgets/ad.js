@@ -5,9 +5,10 @@ import Body from "./ADbody.js";
 export default class AD extends React.Component{
     componentDidMount(){
         console.log("componentDidMount : AD");
-        
+        console.log(this.props);
     }
     render(){
+
         return (
             <div>
                 <h2> this is AD!!!!</h2>

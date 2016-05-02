@@ -61,8 +61,8 @@ function createReducer(initialState,fns){
 }
 var TodoReducer = createReducer(todoJSON,{
 	DELETETODO: (state,action) => {
-		state.splice(action.index,1);
-		return state;
+		return [...state.slice(0,action.index),
+			...state.slice(action.index + 1)]
 	},
 	CHECKTODO: (state,action) => {
 		var ck = state[action.index].compiled;
@@ -92,8 +92,6 @@ var TodoReducer = createReducer(todoJSON,{
 	},
 	ADDTODO: (state,action) => {
 		var data = action.data;
-		// console.log(data);
-		// state.unshift(data);
 		return [data,...state];
 	}
 })

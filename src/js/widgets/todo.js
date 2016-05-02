@@ -1,7 +1,7 @@
 'use strict';
 import React from "react";
 import ReactDOM from "react-dom";
-export default class todo extends React.Component{
+export default class Todo extends React.Component{
     constructor(props){
         super();
         this.state = props;
@@ -25,7 +25,7 @@ export default class todo extends React.Component{
         // console.log('componentWillUnmount');
     }
     delete(){
-        this.props.functions.delete(this.index);
+        this.props.functions.delete(this.index,this);
     }
     check(){
         this.props.functions.check(this.index);
@@ -75,6 +75,8 @@ export default class todo extends React.Component{
         var editTodoClass = this.isClassActive ?  "editTodo active" : "editTodo";
         var todoClassName = "todoItem " + (display === 'block' ? 'block' : display);
         var contentClass = "todoContent " + (this.isContentActive ? "active" : ""); 
+
+        // console.log(index,this.isContentActive);
         return (
             <div className={ todoClassName } ref="todoItem">
                 <div className="todoTitleCtn">
