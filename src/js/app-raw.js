@@ -18,9 +18,9 @@ var store = createStore(TodoReducer);
 import css from "./../css/app.scss";
 const appHtml = document.getElementById('app');
 window.onpopstate = function(e){
-	console.log(e);
-	console.log(window.history);
-	console.log(`@@@@@@@@@@@@@`)
+	// console.log(e);
+	// console.log(window.history);
+	// console.log(`@@@@@@@@@@@@@`)
 }
 class App extends React.Component{
 	constructor(props){
@@ -39,10 +39,10 @@ class App extends React.Component{
 		// Store.register('UPDATETODO',this.updateCallBack.bind(this));
 	}
 	componentWillReciveProps(newProps){
-		console.log(newProps);
+		console.log("componentWillReciveProps  app-raw",newProps);
 	}
 	componentDidMount(){
-		console.log(` all my children!! : ${this.props.children} `);
+		// console.log(` all my children!! : ${this.props.children} `);
 	}
 	check(index,state){
 		// Actions.CHECKTODO(index);
@@ -78,7 +78,6 @@ class App extends React.Component{
 	// }
 	setsasa(e){
 		var history = window.history;
-		console.log(history);
 		var type = e.target.getAttribute('data-id');
 		switch(type){
 			case "AD":
@@ -114,7 +113,7 @@ class App extends React.Component{
 			<div>
 				<h1>{name} 
 					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link> 
-					<Link to="AD"><button style={ADStyle}>AD!!</button></Link>
+					<Link to="AD/liiii?me=zmz&age=99"><button style={ADStyle}>AD!!</button></Link>
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
 					<button onClick={this.replaceState.bind(this)}>replaceADTOCALENDER</button>
@@ -135,7 +134,7 @@ ReactDom.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={App}>
 			<Route path="/calender" component={Calender} />
-			<Route path="/AD" component={AD} />
+			<Route path="/AD/:fuck" component={AD} />
 		</Route>
 	</Router>
 	,appHtml);

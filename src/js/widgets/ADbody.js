@@ -2,21 +2,29 @@
 import React from "react";
 
 export default class ADHEAD extends React.Component{
-    constructor(){
+    constructor(props){
         super();
         this.classname = 'adBODY';
     }
     componentWillMount(){
-        console.log(` ad body will mount!! `);
+        this.setState({
+            type: this.props.type,
+            query : this.props.query
+        })
+        console.log('componentWillMount   ADHEAD');
     }
-    myfeture(){
-        console.log('this is my feture from adBODY')
+    componentWillReceiveProps(newProps){
+        console.log("componentWillReceiveProps");
+        console.log(newProps)
     }
-
     render(){
+        let { type } = this.state;
+        let { query } = this.state;
+        var {me,age} = query;
         return (
             <div>
-                <h2>this is ADBODY</h2>
+                <h2>this is ADBODY and i like this way : {type}</h2>
+                <h3>and my name is {me} and age is : {age}</h3>
             </div>
         )
     }
