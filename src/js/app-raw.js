@@ -13,10 +13,14 @@ import { createStore } from 'redux';
 import TodoReducer from './redux-reducer.js';
 import { Provider } from "react-redux";
 
-var store = createStore(TodoReducer);
+import adlinks from './JSON/test.js';
+
+
 // load css
 import css from "./../css/app.scss";
+var store = createStore(TodoReducer);
 const appHtml = document.getElementById('app');
+console.log(adlinks);
 window.onpopstate = function(e){
 	// console.log(e);
 	// console.log(window.history);
@@ -27,6 +31,7 @@ class App extends React.Component{
 		super();
 		// this.state = Object.assign({},props,{todoJSON: Store.getAllTodos()});
 		this.state = store.getState();
+		this.fuckCount = 0;
 	}
 	componentWillMount(){
 		store.subscribe(()=>{
@@ -43,6 +48,8 @@ class App extends React.Component{
 	}
 	componentDidMount(){
 		// console.log(` all my children!! : ${this.props.children} `);
+		var ad = this.refs.ads;
+		var a = ad.parentNode;
 	}
 	check(index,state){
 		// Actions.CHECKTODO(index);
@@ -65,6 +72,9 @@ class App extends React.Component{
 	}
 	filterTodo(e){
 		store.dispatch(Actions.FILTERTODO(e.target.value));
+	}
+	componentDidUpdate (){
+	    console.log('APP componentDidUpdate ');
 	}
 	// deleteCallBack(){
 	// 	// console.log(Store.getAllTodos());
@@ -89,7 +99,8 @@ class App extends React.Component{
 		}
 	}
 	replaceState(e){
-		window.history.replaceState({name: "fuck that ass"},"daass!!","#/fuckthatass!!!");
+		// window.history.replaceState({name: "fuck that ass"},"daass!!","#/fuckthatass!!!");
+
 	}
 	render(){
 		var {todoJSON:todoJSON} = this.state;
@@ -109,12 +120,19 @@ class App extends React.Component{
 			fontSize: "36px"
 		}
 		var ADStyle = Object.assign({},buttonStyle,{color: "green"});
+
+		var adLinkbUTTONS = adlinks.adlinks.map((item,index) =>{
+			var { like, me, age } = item;
+			var temp = "AD/"+like+"?me="+me+"&age="+age;
+			return <Link to={temp} key={index}><button style={ADStyle} ref='ads'>AD!!</button></Link>
+		})
 		return (
 			<div>
 				<h1>{name} 
 					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link> 
-					<Link to="AD/liiii?me=zmz&age=99"><button style={ADStyle}>AD!!</button></Link>
+					
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
+					{ adLinkbUTTONS }
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
 					<button onClick={this.replaceState.bind(this)}>replaceADTOCALENDER</button>
 					<span>current </span>

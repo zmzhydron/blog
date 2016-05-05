@@ -14,8 +14,10 @@ export default class ADHEAD extends React.Component{
         console.log('componentWillMount   ADHEAD');
     }
     componentWillReceiveProps(newProps){
-        console.log("componentWillReceiveProps");
-        console.log(newProps)
+        this.setState({
+            type: newProps.type,
+            query : newProps.query
+        })
     }
     render(){
         let { type } = this.state;
