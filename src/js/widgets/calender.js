@@ -4,6 +4,15 @@ export default class Calender extends React.Component{
     componentWillMount(){
         console.log("calender");
     }
+    componentWillReciveProps(newProp){
+
+    }
+    componentWillUnMount(){
+        console.log("$$$$$$$$")
+    }
+    componentDidMount(){
+
+    }
     render(){
         return (
             <div>
