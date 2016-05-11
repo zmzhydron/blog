@@ -23,8 +23,8 @@ const appHtml = document.getElementById('app');
 console.log(adlinks);
 window.onpopstate = function(e){
 	// console.log(e);
-	// console.log(window.history);
-	// console.log(`@@@@@@@@@@@@@`)
+	console.log(window.history);
+	console.log(`@@@@@@@@@@@@@`)
 }
 class App extends React.Component{
 	constructor(props){
@@ -48,8 +48,12 @@ class App extends React.Component{
 	}
 	componentDidMount(){
 		// console.log(` all my children!! : ${this.props.children} `);
-		var ad = this.refs.ads;
+		var ad = this.refs.ad1;
+		console.log(this.refs);
 		var a = ad.parentNode;
+		setTimeout(() =>{
+			a.setAttribute('href',"#AD/blowjob?me=dashabi&age=16");
+		},1000);
 	}
 	check(index,state){
 		// Actions.CHECKTODO(index);
@@ -88,19 +92,23 @@ class App extends React.Component{
 	// }
 	setsasa(e){
 		var history = window.history;
-		var type = e.target.getAttribute('data-id');
-		switch(type){
-			case "AD":
-				history.pushState({name: "AD"},"","#/" + type);
-			break;
-			case "calender":
-				history.pushState({name: "calender"},"","#/" + type);
-			break;
-		}
+		history.pushState({type: "doggy"},'fuck you','#/AD/shittttt?me=siwazi&age=222222222');
+		// var type = e.target.getAttribute('data-id');
+		// switch(type){
+		// 	case "AD":
+		// 		history.pushState({name: "AD"},"","#/" + type);
+		// 	break;
+		// 	case "calender":
+		// 		history.pushState({name: "calender"},"","#/" + type);
+		// 	break;
+		// }
 	}
 	replaceState(e){
 		// window.history.replaceState({name: "fuck that ass"},"daass!!","#/fuckthatass!!!");
 
+	}
+	changeLocation(){
+		window.location.href = 'http://localhost:8080/src/page/app.htm#/AD/shittttt?me=siwazi&age=111111111';
 	}
 	render(){
 		var {todoJSON:todoJSON} = this.state;
@@ -124,7 +132,8 @@ class App extends React.Component{
 		var adLinkbUTTONS = adlinks.adlinks.map((item,index) =>{
 			var { like, me, age } = item;
 			var temp = "AD/"+like+"?me="+me+"&age="+age;
-			return <Link to={temp} key={index}><button style={ADStyle} ref='ads'>AD!!</button></Link>
+			var ref = "ad" + index;
+			return <Link to={temp} key={index}><button ref={ref} style={ADStyle}>AD!!</button></Link>
 		})
 		return (
 			<div>
@@ -134,8 +143,8 @@ class App extends React.Component{
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
 					{ adLinkbUTTONS }
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
-					<button onClick={this.replaceState.bind(this)}>replaceADTOCALENDER</button>
-					<span>current </span>
+					<button onClick={this.changeLocation.bind(this)}>changeLocation</button>
+					<span>current</span>
 				</h1>
 				current router is : { this.props.children }
 				<div className = "todofilters">

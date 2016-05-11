@@ -1,6 +1,10 @@
 'use strict'
 import React from "react";
-export default class Calender extends React.Component{
+import testMix from './highOrderComponent.js';
+class Calender extends React.Component{
+    constructor(){
+        super();
+    }
     componentWillMount(){
         console.log("calender");
     }
@@ -14,10 +18,8 @@ export default class Calender extends React.Component{
 
     }
     render(){
-        return (
-            <div>
-                <h2> this is calender!!!!</h2>
-            </div>
-        )
+        console.log("!!!!!!!!!");
+        return <h2> this is calender!!!! {this.props.type}</h2>;
     }
 }
+export default testMix(Calender);

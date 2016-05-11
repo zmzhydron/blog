@@ -23,6 +23,7 @@ export default class AD extends React.Component{
         console.log('AD componentDidUpdate ');
     }
     render(){
+        // console.log(this.props);
         var { params } = this.props;
         var { fuck: type } = params;
         var { location: {query}} = this.props; //得到url query
