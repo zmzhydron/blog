@@ -14,8 +14,6 @@ import TodoReducer from './redux-reducer.js';
 import { Provider } from "react-redux";
 
 import adlinks from './JSON/test.js';
-
-
 // load css
 import css from "./../css/app.scss";
 var store = createStore(TodoReducer);
@@ -23,8 +21,8 @@ const appHtml = document.getElementById('app');
 console.log(adlinks);
 window.onpopstate = function(e){
 	// console.log(e);
-	console.log(window.history);
-	console.log(`@@@@@@@@@@@@@`)
+	// console.log(window.history);
+	// console.log(`@@@@@@@@@@@@@`)
 }
 class App extends React.Component{
 	constructor(props){
@@ -78,7 +76,7 @@ class App extends React.Component{
 		store.dispatch(Actions.FILTERTODO(e.target.value));
 	}
 	componentDidUpdate (){
-	    console.log('APP componentDidUpdate ');
+	    // console.log('APP componentDidUpdate ');
 	}
 	// deleteCallBack(){
 	// 	// console.log(Store.getAllTodos());
@@ -137,9 +135,9 @@ class App extends React.Component{
 		})
 		return (
 			<div>
-				<h1>{name} 
-					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link> 
-					
+				<h1>{name}
+					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>
+
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
 					{ adLinkbUTTONS }
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
