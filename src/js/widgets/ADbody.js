@@ -1,17 +1,18 @@
 'use strict'
 import React from "react";
 
-export default class ADHEAD extends React.Component{
+export default class ADBODY extends React.Component{
     constructor(props){
         super();
         this.classname = 'adBODY';
+		console.log('ADBODY pROPS');
+		console.log(props);
     }
     componentWillMount(){
         this.setState({
             type: this.props.type,
             query : this.props.query
         })
-        console.log('componentWillMount   ADHEAD');
     }
     componentWillReceiveProps(newProps){
         this.setState({

@@ -8,7 +8,7 @@ var todoJSON = [
 	{
 		title: "买牛奶",
 		compiled: true,
-		info: "伊利的"
+		info: "伊利的~~"
 	},
 	{
 		title: "给娃娃洗澡",

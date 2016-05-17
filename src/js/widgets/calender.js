@@ -2,23 +2,20 @@
 import React from "react";
 import HighOrder from './highOrderComponent.js';
 class Calender extends React.Component{
-    constructor(){
+    constructor(props){
         super();
+		console.log(props);
+		console.log('calender constructor!!!');
     }
     componentWillMount(){
-        console.log("calender");
     }
     componentWillReciveProps(newProp){
-
     }
     componentWillUnMount(){
-        console.log("$$$$$$$$")
     }
     componentDidMount(){
-
     }
     render(){
-        console.log("!!!!!!!!!");
         return <h2> this is calender!!!! {this.props.type}</h2>;
     }
 }
