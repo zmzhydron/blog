@@ -1,0 +1,39 @@
+@media screen and (max-width: 1650px) {
+  html {
+    font-size: 100%; } }
+@media screen and (min-width: 1651px) {
+  html {
+    font-size: 150%; } }
+#a {
+  height: 3.125rem;
+  width: 12.5rem;
+  background-color: blue;
+  color: white;
+  line-height: 3.125rem;
+  text-align: center;
+  transition: all linear 0.5s;
+  box-shadow: 0rem 1.25rem 1.25rem -0.75rem rgba(255, 123, 75, 0.5); }
+
+#a:hover {
+  box-shadow: 0rem 1.75rem 2.5rem -1.25rem rgba(255, 123, 75, 0.5);
+  position: absolute; }
+
+#b, #c, #d {
+  height: 3rem;
+  background-color: gray;
+  margin-top: 5px;
+  color: red;
+  font-size: 1.5rem; }
+
+#rect {
+  /*transform: rotate(30deg);*/
+  fill: green; }
+
+#svg {
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  width: 300px;
+  height: 300px; }
+
+/*# sourceMappingURL=boxshadow.css.map */
