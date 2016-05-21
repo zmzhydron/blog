@@ -4,7 +4,7 @@ import ReactDom from "react-dom";
 import { Router, Route, IndexRoute, hashHistory, Link, browserHistory } from "react-router";
 import Todos from "./widgets/todos.js";
 import AddTodo from "./widgets/addTodo.js";
-import Calender from "./widgets/calender.js";
+import Calender from "./widgets/calender/calender.js";
 import AD from "./widgets/AD.js";
 // import Store from './flux-store.js';
 // import Actions from "./flux-actions.js";
@@ -18,7 +18,7 @@ import adlinks from './JSON/test.js';
 import css from "./../css/app.scss";
 var store = createStore(TodoReducer);
 const appHtml = document.getElementById('app');
-console.log(adlinks);
+// console.log(adlinks);
 window.onpopstate = function(e){
 	// console.log(e);
 	// console.log(window.history);
@@ -43,12 +43,12 @@ class App extends React.Component{
 		// Store.register('UPDATETODO',this.updateCallBack.bind(this));
 	}
 	componentWillReciveProps(newProps){
-		console.log("componentWillReciveProps  app-raw",newProps);
+		// console.log("componentWillReciveProps  app-raw",newProps);
 	}
 	componentDidMount(){
 		// console.log(` all my children!! : ${this.props.children} `);
 		var ad = this.refs.ad1;
-		console.log(this.refs);
+		// console.log(this.refs);
 		var a = ad.parentNode;
 		setTimeout(() =>{
 			a.setAttribute('href',"#AD/blowjob?me=dashabi&age=16");
@@ -70,7 +70,6 @@ class App extends React.Component{
 		store.dispatch(Actions.UPDATETODO(index,data));
 	}
 	add(data){
-		console.log('adding a todo');
 		store.dispatch(Actions.ADDTODO(data));
 	}
 	filterTodo(e){
