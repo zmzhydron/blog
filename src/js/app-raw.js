@@ -25,6 +25,7 @@ window.onpopstate = function(e){
 	// console.log(`@@@@@@@@@@@@@`)
 	//
 }
+import Animationss from "react-addons-css-transition-group";
 class App extends React.Component{
 	constructor(props){
 		super();
@@ -38,6 +39,16 @@ class App extends React.Component{
 				todoJSON: store.getState().todoJSON
 			})
 		})
+		this.setState({
+			names:" fuckZMZ!!",
+			classe: "test-enter"
+		})
+		setTimeout(() =>{
+			this.setState({
+				names:" fuck you!!!!!!",
+				classe: "test-enter test-enter-active"
+			})
+		},2000);
 		// Store.register('CHECKTODO',this.checkCallBack.bind(this));
 		// Store.register('DELETETODO',this.deleteCallBack.bind(this));
 		// Store.register('UPDATETODO',this.updateCallBack.bind(this));
@@ -137,14 +148,15 @@ class App extends React.Component{
 			<div>
 				<h1>{name}
 					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>
-
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
 					{ adLinkbUTTONS }
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
 					<button onClick={this.changeLocation.bind(this)}>changeLocation</button>
 					<span>current</span>
 				</h1>
-				current router is : { this.props.children }
+				<div>
+					current router is : { this.props.children }
+				</div>
 				<div className = "todofilters">
 				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
 				</div>
