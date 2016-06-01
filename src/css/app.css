@@ -53,5 +53,19 @@
 #editBtn {
   order: 0;
 }
+.gogo{
+  opacity:0.1;
+  transition:all 500ms linear;
+}
+.gogo-enter,.gogo-enter-active{
+  opacity:1;
+}
+.gogo-leave {
+  opacity: 1;
+}
 
+.gogo-leave.gogo-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
 /*# sourceMappingURL=app.css.map */

@@ -5,6 +5,9 @@
 @mixin underline($color:gray){
 	border-bottom:solid 1px $color
 }
+body{
+	background-color:silver;
+}
 .todoListCtn{
 	width:1000px;
 	height:auto;
@@ -103,4 +106,19 @@
 }
 #editBtn{
 	order:0;
+}
+.gogo{
+	opacity:0.1;
+	transition:all 500ms linear;
+}
+.gogo-enter,.gogo-enter-active{
+	opacity:1;
+}
+.gogo-leave {
+  opacity: 1;
+}
+
+.gogo-leave.gogo-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

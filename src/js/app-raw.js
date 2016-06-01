@@ -14,6 +14,10 @@ import TodoReducer from './redux-reducer.js';
 import { Provider } from "react-redux";
 
 import adlinks from './JSON/test.js';
+
+//import react animation 
+// var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 // load css
 import css from "./../css/app.scss";
 var store = createStore(TodoReducer);
@@ -35,7 +39,8 @@ class App extends React.Component{
 	componentWillMount(){
 		store.subscribe(()=>{
 			this.setState({
-				todoJSON: store.getState().todoJSON
+				todoJSON: store.getState().todoJSON,
+				names: "fuck zmz"
 			})
 		})
 		// Store.register('CHECKTODO',this.checkCallBack.bind(this));
@@ -136,20 +141,29 @@ class App extends React.Component{
 		return (
 			<div>
 				<h1>{name}
-					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>
-
+				<ReactCSSTransitionGroup  transitionName="gogo" transitionEnterTimeout={1500} transitionLeaveTimeout={1300}>
+					<div>{this.state.names}</div>
+				</ReactCSSTransitionGroup>
+					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>\
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
-					{ adLinkbUTTONS }
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
 					<button onClick={this.changeLocation.bind(this)}>changeLocation</button>
 					<span>current</span>
 				</h1>
+				
+					{ adLinkbUTTONS }
+				
 				current router is : { this.props.children }
 				<div className = "todofilters">
 				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
 				</div>
 				<AddTodo fun={this.add.bind(this)}/>
-				<Todos data = { todoJSON } fns = {functions}/>
+					<ReactCSSTransitionGroup  transitionName="gogo" transitionEnterTimeout={1500} transitionLeaveTimeout={1300}>
+						<Todos data = { todoJSON } fns = {functions}/>
+					</ReactCSSTransitionGroup>
+					
+				
+				
 			</div>
 		)
 	}
