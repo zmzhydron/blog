@@ -69,3 +69,28 @@
   transition: opacity 300ms ease-in;
 }
 /*# sourceMappingURL=app.css.map */
+.test-enter{
+  opacity:0.01;
+}
+.test-enter.test-enter-active{
+  opacity:1;
+  transition: all ease-in 0.5s;
+}
+.test-leave{
+  opacity:1;
+}
+.test-leave.test-leave-active{
+  opacity:0.01;
+  transition: all ease-in 0.5s;
+}
+body{
+  background-color: silver;
+}
+.test-appear {
+  opacity: 0.01;
+}
+
+.test-appear.test-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}

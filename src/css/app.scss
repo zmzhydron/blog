@@ -107,18 +107,34 @@ body{
 #editBtn{
 	order:0;
 }
-.gogo{
-	opacity:0.1;
-	transition:all 500ms linear;
+
+.test-enter{
+	opacity:0.01;
+	transition: all ease-in 1s;
 }
-.gogo-enter,.gogo-enter-active{
+.test-enter.test-enter-active{
+	opacity:1;
+	background-color:green;
+	
+}
+.test-leave{
 	opacity:1;
 }
-.gogo-leave {
-  opacity: 1;
+.test-leave.test-leave-active{
+	opacity:0.01;
+	background-color:yellow;
+	transition: all ease-in 1s;
+}
+body{
+	background-color: silver;
+}
+.1test-appear {
+  opacity: 0.01;
+
 }
 
-.gogo-leave.gogo-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
+.1test-appear.test-appear-active {
+	background-color:red;
+  	opacity: 1;
+  	transition: opacity .5s ease-in;
 }

@@ -14,9 +14,6 @@ import TodoReducer from './redux-reducer.js';
 import { Provider } from "react-redux";
 
 import adlinks from './JSON/test.js';
-
-//import react animation 
-// var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 // load css
 import css from "./../css/app.scss";
@@ -29,6 +26,7 @@ window.onpopstate = function(e){
 	// console.log(`@@@@@@@@@@@@@`)
 	//
 }
+import Animationss from "react-addons-css-transition-group";
 class App extends React.Component{
 	constructor(props){
 		super();
@@ -43,6 +41,16 @@ class App extends React.Component{
 				names: "fuck zmz"
 			})
 		})
+		this.setState({
+			names:" fuckZMZ!!",
+			classe: "test-enter"
+		})
+		setTimeout(() =>{
+			this.setState({
+				names:" fuck you!!!!!!",
+				classe: "test-enter test-enter-active"
+			})
+		},2000);
 		// Store.register('CHECKTODO',this.checkCallBack.bind(this));
 		// Store.register('DELETETODO',this.deleteCallBack.bind(this));
 		// Store.register('UPDATETODO',this.updateCallBack.bind(this));
@@ -141,19 +149,17 @@ class App extends React.Component{
 		return (
 			<div>
 				<h1>{name}
-				<ReactCSSTransitionGroup  transitionName="gogo" transitionEnterTimeout={1500} transitionLeaveTimeout={1300}>
-					<div>{this.state.names}</div>
-				</ReactCSSTransitionGroup>
 					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>\
+					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
 					<button onClick={this.changeLocation.bind(this)}>changeLocation</button>
 					<span>current</span>
 				</h1>
-				
 					{ adLinkbUTTONS }
-				
-				current router is : { this.props.children }
+				<div>
+					current router is : { this.props.children }
+				</div>
 				<div className = "todofilters">
 				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
 				</div>
@@ -161,9 +167,6 @@ class App extends React.Component{
 					<ReactCSSTransitionGroup  transitionName="gogo" transitionEnterTimeout={1500} transitionLeaveTimeout={1300}>
 						<Todos data = { todoJSON } fns = {functions}/>
 					</ReactCSSTransitionGroup>
-					
-				
-				
 			</div>
 		)
 	}
