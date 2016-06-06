@@ -8,3 +8,11 @@ https://github.com/flyhigher139/Git-Cheat-Sheet/blob/master/Git%20Cheat%20Sheet-
 
 
 https://zhuanlan.zhihu.com/p/20312691?refer=purerender
+
+this is a stash test
+
+one 
+
+two 
+
+three!!!!!!!!!!!!!!!!!!
