@@ -7,31 +7,30 @@ export default class AD extends React.Component{
         super();
     }
     componentWillMount(){
-        console.log("AD componentDidMount");
+        // console.log("AD componentDidMount");
         console.log(this.props);
     }
     componentWillUnmount(){
-        console.log('AD  componentWillUnmount')
+        // console.log('AD  componentWillUnmount')
     }
     componentWillReciveProps(newProp){
         console.log('AD componentWillReciveProps!',newProp);
     }
     componentWillUpdate (){
-        console.log('AD componentWillUpdate ');
+        // console.log('AD componentWillUpdate ');
     }
     componentDidUpdate (){
-        console.log('AD componentDidUpdate ');
+        // console.log('AD componentDidUpdate ');
     }
     render(){
         // console.log(this.props);
         var { params } = this.props;
         var { fuck: type } = params;
         var { location: {query}} = this.props; //得到url query
-        console.log("ad reder!!");
         return (
             <div>
-                <h2> this is AD!!!!</h2>
-                <Head><Body query={query} type={type} age={"27"}/></Head>
+                <h2>this is AD!!!!</h2>
+                <Head MSG={"wordoverTIME"}><Body query={query} type={type} age={"27"}/></Head>
             </div>
         )
     }

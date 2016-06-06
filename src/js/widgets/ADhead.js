@@ -4,12 +4,27 @@ import React from "react";
 export default class ADHEAD extends React.Component{
     constructor(props){
         super();
+		console.log("ADHEAD");
+		console.log(props);
     }
+	componentWillMount(){
+		this.styles = {
+			color: "red",
+			backgroundColor: "lime"
+		}
+	}
+	componentDidMount(){
+		var headref = this.refs.ADheadTitle;
+	}
     render(){
-        var {children: chill} =  this.props;
+        var {children: sonNode} =  this.props;
+		var {MSG: overtime} = this.props;
         return (
             <div>
-                <h2>{chill}ad for rent!!!</h2>
+                <div>
+					<h2 ref="ADheadTitle" style={this.styles}>HeadBody as Follows:</h2>
+					{sonNode}
+				</div>
             </div>
         )
     }

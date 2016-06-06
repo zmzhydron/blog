@@ -4,7 +4,7 @@ import ReactDom from "react-dom";
 import { Router, Route, IndexRoute, hashHistory, Link, browserHistory } from "react-router";
 import Todos from "./widgets/todos.js";
 import AddTodo from "./widgets/addTodo.js";
-import Calender from "./widgets/calender.js";
+import Calender from "./widgets/calender/calender.js";
 import AD from "./widgets/AD.js";
 // import Store from './flux-store.js';
 // import Actions from "./flux-actions.js";
@@ -14,18 +14,18 @@ import TodoReducer from './redux-reducer.js';
 import { Provider } from "react-redux";
 
 import adlinks from './JSON/test.js';
-
-
 // load css
 import css from "./../css/app.scss";
 var store = createStore(TodoReducer);
 const appHtml = document.getElementById('app');
-console.log(adlinks);
+// console.log(adlinks);
 window.onpopstate = function(e){
 	// console.log(e);
-	console.log(window.history);
-	console.log(`@@@@@@@@@@@@@`)
+	// console.log(window.history);
+	// console.log(`@@@@@@@@@@@@@`)
+	//
 }
+import Animationss from "react-addons-css-transition-group";
 class App extends React.Component{
 	constructor(props){
 		super();
@@ -39,17 +39,27 @@ class App extends React.Component{
 				todoJSON: store.getState().todoJSON
 			})
 		})
+		this.setState({
+			names:" fuckZMZ!!",
+			classe: "test-enter"
+		})
+		setTimeout(() =>{
+			this.setState({
+				names:" fuck you!!!!!!",
+				classe: "test-enter test-enter-active"
+			})
+		},2000);
 		// Store.register('CHECKTODO',this.checkCallBack.bind(this));
 		// Store.register('DELETETODO',this.deleteCallBack.bind(this));
 		// Store.register('UPDATETODO',this.updateCallBack.bind(this));
 	}
 	componentWillReciveProps(newProps){
-		console.log("componentWillReciveProps  app-raw",newProps);
+		// console.log("componentWillReciveProps  app-raw",newProps);
 	}
 	componentDidMount(){
 		// console.log(` all my children!! : ${this.props.children} `);
 		var ad = this.refs.ad1;
-		console.log(this.refs);
+		// console.log(this.refs);
 		var a = ad.parentNode;
 		setTimeout(() =>{
 			a.setAttribute('href',"#AD/blowjob?me=dashabi&age=16");
@@ -71,14 +81,13 @@ class App extends React.Component{
 		store.dispatch(Actions.UPDATETODO(index,data));
 	}
 	add(data){
-		console.log('adding a todo');
 		store.dispatch(Actions.ADDTODO(data));
 	}
 	filterTodo(e){
 		store.dispatch(Actions.FILTERTODO(e.target.value));
 	}
 	componentDidUpdate (){
-	    console.log('APP componentDidUpdate ');
+	    // console.log('APP componentDidUpdate ');
 	}
 	// deleteCallBack(){
 	// 	// console.log(Store.getAllTodos());
@@ -137,16 +146,17 @@ class App extends React.Component{
 		})
 		return (
 			<div>
-				<h1>{name} 
-					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link> 
-					
+				<h1>{name}
+					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
 					{ adLinkbUTTONS }
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
 					<button onClick={this.changeLocation.bind(this)}>changeLocation</button>
 					<span>current</span>
 				</h1>
-				current router is : { this.props.children }
+				<div>
+					current router is : { this.props.children }
+				</div>
 				<div className = "todofilters">
 				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
 				</div>
