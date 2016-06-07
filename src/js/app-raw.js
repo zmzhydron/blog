@@ -9,13 +9,22 @@ import AD from "./widgets/AD.js";
 // import Store from './flux-store.js';
 // import Actions from "./flux-actions.js";
 import * as Actions from "./redux-actions.js";
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import TodoReducer from './redux-reducer.js';
 import { Provider } from "react-redux";
 
 import adlinks from './JSON/test.js';
 // load css
 import css from "./../css/app.scss";
+
+// test middleware
+var logs = store => next => action =>{
+	console.log('current action is : ',action);
+	var result = next(action);
+	console.log('result is : ',result);
+	return result;
+}
+let plusMiddleWare = applyMiddleware(logs)(createStore);
 var store = createStore(TodoReducer);
 const appHtml = document.getElementById('app');
 // console.log(adlinks);
@@ -81,7 +90,8 @@ class App extends React.Component{
 		store.dispatch(Actions.UPDATETODO(index,data));
 	}
 	add(data){
-		store.dispatch(Actions.ADDTODO(data));
+		var r = store.dispatch(Actions.ADDTODO(data));
+		console.log(r);
 	}
 	filterTodo(e){
 		store.dispatch(Actions.FILTERTODO(e.target.value));
