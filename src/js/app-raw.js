@@ -16,7 +16,6 @@ import { Provider } from "react-redux";
 import adlinks from './JSON/test.js';
 // load css
 import css from "./../css/app.scss";
-
 /*
 	load middleware
 */
@@ -102,7 +101,8 @@ class App extends React.Component{
 		store.dispatch(Actions.UPDATETODO(index,data));
 	}
 	add(data){
-		store.dispatch(Actions.ADDTODO(data));
+		var r = store.dispatch(Actions.ADDTODO(data));
+		console.log(r);
 	}
 	filterTodo(e){
 		store.dispatch(Actions.FILTERTODO(e.target.value));
