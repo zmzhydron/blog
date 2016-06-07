@@ -9,14 +9,35 @@ import AD from "./widgets/AD.js";
 // import Store from './flux-store.js';
 // import Actions from "./flux-actions.js";
 import * as Actions from "./redux-actions.js";
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import TodoReducer from './redux-reducer.js';
 import { Provider } from "react-redux";
 
 import adlinks from './JSON/test.js';
 // load css
 import css from "./../css/app.scss";
-var store = createStore(TodoReducer);
+
+/*
+	load middleware
+*/
+var logger = store => next => action =>{
+	console.log('loggerloggerloggerloggerloggerloggerloggerlogge: ',action);
+	// var result = next(action);
+	console.log('next state is : ',store.getState());
+	// console.log(store.dispatch(action));
+	// return result;
+	next(action);
+	// store.dispatch(action);
+}
+var FUCKER = store => next => action =>{
+	console.log('FUCKERFUCKERFUCKERFUCKERFUCKER ',action);
+	// var result = next(action);
+	next(action);
+	// return result;
+}
+
+var makeMiddleWare = applyMiddleware(logger,FUCKER)(createStore);
+var store = makeMiddleWare(TodoReducer);
 const appHtml = document.getElementById('app');
 // console.log(adlinks);
 window.onpopstate = function(e){
