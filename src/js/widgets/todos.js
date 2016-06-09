@@ -14,8 +14,7 @@ export default class Todos extends React.Component{
 		})
 		return (
 		<div className = "todoListCtn">
-			
-			<Animationss transitionName="test" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
+			<Animationss transitionName="test"  transitionEnterTimeout={2000} transitionLeaveTimeout={3000}>
 				{ todolist }
 			</Animationss>
 		</div>
