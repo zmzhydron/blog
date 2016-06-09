@@ -1,0 +1,28 @@
+module.exports = {
+	entry:["./app-raw.js"],
+	output:{
+		path:__dirname,
+		filename:"./app.js"
+	},
+	module:{
+		loaders:[
+			{
+				test:/\.css$/,
+				loaders:['style','css']
+			},
+			{
+				test:/\.scss$/,
+				loaders:['style','css','sass']
+			},
+			{
+				test:/\.js$/,
+				loader:["babel"],
+				exclude:/node_modules/,
+				query:{
+					presets:['es2015','react']
+				}
+			}
+		]
+	},
+	resolve:['','.js','.css','.scss','.json']
+}
