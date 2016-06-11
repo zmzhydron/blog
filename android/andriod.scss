@@ -2,8 +2,8 @@ $red: red;
 @mixin borders($color:green, $width:2px, $style:solid) {
 	border: $color $width $style;
 }
-#diva{
-	color:$red;
+#diva {
+	color: $red;
 	border: solid 1px black;
 	@include borders();
 }

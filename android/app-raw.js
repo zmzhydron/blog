@@ -1,12 +1,12 @@
 import _ from "lodash";
 console.log(_);
-import css from "./andriod.scss";
+import css from "andriod.scss";
 class Person {
     constructor(name) {
         this.name = 'zhangmingzhi';
         this.myLike = name || 'pussy'
     }
-    say(){
+    say() {
         console.log(` my name is ${this.name} `)
         console.log(` and i like : ${this.myLike} `)
     }

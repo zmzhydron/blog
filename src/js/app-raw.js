@@ -167,17 +167,20 @@ class App extends React.Component{
 			var ref = "ad" + index;
 			return <Link to={temp} key={index}><button ref={ref} style={ADStyle}>AD!!</button></Link>
 		})
+
+
+		// 调试historty的按钮
+		// <button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
+		// <button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
+		// <button onClick={this.changeLocation.bind(this)}>changeLocation</button>
 		return (
 			<div>
 				<h1>{name}
-					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>\
 					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
 					<button onClick={this.changeLocation.bind(this)}>changeLocation</button>
-					<span>current</span>
 				</h1>
-					{ adLinkbUTTONS }
 				<div>
 					current router is : { this.props.children }
 				</div>
