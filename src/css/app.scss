@@ -5,6 +5,9 @@
 @mixin underline($color:gray){
 	border-bottom:solid 1px $color
 }
+body{
+	background-color:silver;
+}
 .todoListCtn{
 	width:1000px;
 	height:auto;
@@ -104,22 +107,24 @@
 #editBtn{
 	order:0;
 }
+
 .test-enter{
 	opacity:0.01;
-	transition: all ease-in 1s;
+	transition: all ease-in 111500ms;
 }
 .test-enter.test-enter-active{
 	opacity:1;
 	background-color:green;
-	
 }
 .test-leave{
 	opacity:1;
+	background-color:red;
+	transition: all ease-in 5500ms;
 }
 .test-leave.test-leave-active{
 	opacity:0.01;
 	background-color:yellow;
-	transition: all ease-in 1s;
+	
 }
 body{
 	background-color: silver;

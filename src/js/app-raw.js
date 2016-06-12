@@ -14,18 +14,30 @@ import TodoReducer from './redux-reducer.js';
 import { Provider } from "react-redux";
 
 import adlinks from './JSON/test.js';
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 // load css
 import css from "./../css/app.scss";
-
-// test middleware
-var logs = store => next => action =>{
-	console.log('current action is : ',action);
-	var result = next(action);
-	console.log('result is : ',result);
-	return result;
+/*
+	load middleware
+*/
+var logger = store => next => action =>{
+	console.log('loggerloggerloggerloggerloggerloggerloggerlogge: ',action);
+	// var result = next(action);
+	console.log('next state is : ',store.getState());
+	// console.log(store.dispatch(action));
+	// return result;
+	next(action);
+	// store.dispatch(action);
 }
-let plusMiddleWare = applyMiddleware(logs)(createStore);
-var store = createStore(TodoReducer);
+var FUCKER = store => next => action =>{
+	console.log('FUCKERFUCKERFUCKERFUCKERFUCKER ',action);
+	// var result = next(action);
+	next(action);
+	// return result;
+}
+
+var makeMiddleWare = applyMiddleware(logger,FUCKER)(createStore);
+var store = makeMiddleWare(TodoReducer);
 const appHtml = document.getElementById('app');
 // console.log(adlinks);
 window.onpopstate = function(e){
@@ -45,7 +57,8 @@ class App extends React.Component{
 	componentWillMount(){
 		store.subscribe(()=>{
 			this.setState({
-				todoJSON: store.getState().todoJSON
+				todoJSON: store.getState().todoJSON,
+				names: "fuck zmz"
 			})
 		})
 		this.setState({
@@ -153,15 +166,19 @@ class App extends React.Component{
 			var ref = "ad" + index;
 			return <Link to={temp} key={index}><button ref={ref} style={ADStyle}>AD!!</button></Link>
 		})
+
+
+		// 调试historty的按钮
+		// <button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
+		// <button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
+		// <button onClick={this.changeLocation.bind(this)}>changeLocation</button>
 		return (
 			<div>
 				<h1>{name}
 					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
-					{ adLinkbUTTONS }
 					<button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
 					<button onClick={this.changeLocation.bind(this)}>changeLocation</button>
-					<span>current</span>
 				</h1>
 				<div>
 					current router is : { this.props.children }
@@ -170,7 +187,9 @@ class App extends React.Component{
 				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
 				</div>
 				<AddTodo fun={this.add.bind(this)}/>
-				<Todos data = { todoJSON } fns = {functions}/>
+					<ReactCSSTransitionGroup  transitionName="gogo" transitionEnterTimeout={1500} transitionLeaveTimeout={1300}>
+						<Todos data = { todoJSON } fns = {functions}/>
+					</ReactCSSTransitionGroup>
 			</div>
 		)
 	}

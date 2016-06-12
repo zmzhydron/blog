@@ -21,4 +21,13 @@ http://stackoverflow.com/questions/2452226/master-branch-and-origin-master-have-
 
 http://blog.csdn.net/hudashi/article/details/7664631/
 
-hehehehe 
+hehehehe
+
+transformed 1/3 (33%)[node-haste] Encountered an error while persisting cache:
+> Error: ENOENT: no such file or directory, open 'C:\Users\Administrator\AppData\Local\Temp;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\Desktop\NodeModules\bf530ecc29deeb8c02b3ef
+edc7fe3ba5'
+>     at Error (native)
+transformed 3/97 (3%)[node-haste] Encountered an error while persisting cache:
+> Error: ENOENT: no such file or directory, open 'C:\Users\Administrator\AppData\Local\Temp;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\Desktop\NodeModules\bf530ecc29deeb8c02b3ef
+edc7fe3ba5'
+>     at Error (native)
