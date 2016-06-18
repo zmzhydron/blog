@@ -9,3 +9,14 @@ stash two
 stash 4
 
 shit happens!!
+
+stash 5
+
+s1 s2 s3 s4
+
+q
+w
+e
+r
+tr
+ty
