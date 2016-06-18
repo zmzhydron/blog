@@ -19,7 +19,6 @@ class androidOne extends Component {
     constructor(prop){
         super();
         var {data: fuckdata} = fakeData;
-
         var ds = new ListView.DataSource({ rowHasChanged: (r1,r2) => r1 !== r2 });
         this.state = {
             name: fuckdata.name,
@@ -58,7 +57,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   fuckyou:{
-
       borderColor: "red",
       borderStyle: "solid",
       borderWidth: 3,
