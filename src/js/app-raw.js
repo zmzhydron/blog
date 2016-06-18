@@ -160,7 +160,6 @@ class App extends React.Component{
 			fontSize: "36px"
 		}
 		var ADStyle = Object.assign({},buttonStyle,{color: "green"});
-
 		var adLinkbUTTONS = adlinks.adlinks.map((item,index) =>{
 			var { like, me, age } = item;
 			var temp = "AD/"+like+"?me="+me+"&age="+age;
