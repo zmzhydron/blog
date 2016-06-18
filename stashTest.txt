@@ -2,4 +2,6 @@ this is stashtest!!
 
 oops
 
+reset one
+
 thinking out loud
