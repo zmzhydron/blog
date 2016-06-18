@@ -5,3 +5,7 @@ stash pop
 stash one 
 
 stash two
+
+stash 4
+
+shit happens!!
