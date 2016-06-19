@@ -32,7 +32,10 @@ transformed 3/97 (3%)[node-haste] Encountered an error while persisting cache:
 edc7fe3ba5'
 >     at Error (native)
 
-
+* What went wrong:
+Execution failed for task ':app:installRelease'.
+> com.android.builder.testing.api.DeviceException: com.android.ddmlib.InstallException: Failed to finalize session : INSTALL_FAILED_UPDATE_INCOMPATIBLE: Package com.androidone signatures do not match
+the previously installed version; ignoring!
 
 
 dgf.jklhnsdgfjklh;dgfjkl;dgf;

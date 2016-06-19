@@ -12,55 +12,29 @@ import {
   View,
   Navigator
 } from 'react-native';
-import fakeData from './widgets/mockData.js';
+
 import TodoDetail from "./widgets/todoDetail";
 class androidOne extends Component {
     constructor(){
         super();
-        var {data: fuckdata} = fakeData;
-        var ds = new ListView.DataSource({ rowHasChanged: (r1,r2) => r1 !== r2 });
-        this.state = {
-            name: fuckdata.name,
-            dataSource: ds.cloneWithRows(fuckdata.todoList)
-        };
-
     }
     componentDidMount(){
-        console.log("componentDidMount");
-    }
-    clicker(e){
-        console.log(this);
-        // <ListView
-        //     dataSource = {this.state.dataSource}
-        //     renderRow = {this.renderTodo.bind(this)}
-        // />
     }
     render() {
-        return (
-        <View>
-            <View style={styles.container}>
+        var shit = {
+            shitname: "myname",
+            like: {
+                name: "pussy"
+            }
+        }
 
-            </View>
+        return (
             <Navigator
                 initialRoute={{ name: "TodoDetail", component: TodoDetail }}
-                configureScene={(route) => {
-                  return Navigator.SceneConfigs.VerticalDownSwipeJump;
-                }}
                 renderScene={(route, navigator) => {
                   let Component = route.component;
-                  return <Component params = {"widget params"} navigator={navigator} />
+                  return <Component gogo = {route.gogo} params = {route.params} navigator={navigator} />
             }} />
-        </View>
-        );
-    }
-    renderTodo(item){
-        var compiled = item.compiled ? "已经完成" : "加把劲！！"
-        return (
-            <View style={styles.fuckyou} >
-                <Text style={styles.textStyles} onPress = {this.clicker.bind(this)}> {item.title}</Text>
-                <Text style={styles.textStyles} onPress = {this.clicker.bind(this)}> {item.info}</Text>
-                <Text style={styles.textStyles} onPress = {this.clicker.bind(this)}> {compiled}</Text>
-            </View>
         );
     }
 }
