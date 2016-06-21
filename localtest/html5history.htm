@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button data-key="name" id="a">zmz</button>
+	<button data-key="name" id="b">zhangmingzhi</button>
+	<button data-key="age" id="c">28</button>
+	<button data-key="status" id="d">lower</button>
+
+</body>
+<script type='text/javascript'>
+
+	window.onpopstate = function(e){
+		console.log(e);
+		console.log('onpopstate');
+	}
+	var bta = document.getElementById("a");
+	var btb = document.getElementById("b");
+	var btc = document.getElementById("c");
+	var btd = document.getElementById("d");
+	function cliker(e){
+		var key = e.target.getAttribute("data-key"),
+			url = `${window.location.origin+window.location.pathname}?${key}=${e.target.innerHTML}`;
+		console.log(url);
+		history.pushState({
+			title: key,
+			state: key,
+			url: url
+		},key,"");
+	}
+	var eleList = [bta,btb,btc,btd];
+	eleList.map((item) => {
+		item.addEventListener("click", cliker, "fasle");
+	})
+</script>
+</html>

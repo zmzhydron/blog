@@ -3,50 +3,38 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
   ListView,
-  View
+  View,
+  Navigator
 } from 'react-native';
-import fakeData from './widgets/mockData.js';
-console.log(fakeData);
-console.log("~~~~~~~~~~~~~~");
-class androidOne extends Component {
-    constructor(prop){
-        super();
-        var {data: fuckdata} = fakeData;
 
-        var ds = new ListView.DataSource({ rowHasChanged: (r1,r2) => r1 !== r2 });
-        this.state = {
-            name: fuckdata.name,
-            dataSource: ds.cloneWithRows(fuckdata.todoList)
-        };
+import TodoDetail from "./widgets/todoDetail";
+class androidOne extends Component {
+    constructor(){
+        super();
     }
     componentDidMount(){
-        console.log("componentDidMount");
     }
     render() {
+        var shit = {
+            shitname: "myname",
+            like: {
+                name: "pussy"
+            }
+        }
+
         return (
-          <View style={styles.container}>
-            <ListView
-                dataSource = {this.state.dataSource}
-                renderRow = {this.renderTodo.bind(this)}
-            />
-          </View>
-        );
-    }
-    renderTodo(item){
-        var compiled = item.compiled ? "已经完成" : "加把劲！！"
-        return (
-            <View style={styles.fuckyou}>
-                <Text style={styles.textStyles}> {item.title}</Text>
-                <Text style={styles.textStyles}> {item.info}</Text>
-                <Text style={styles.textStyles}> {compiled}</Text>
-            </View>
+            <Navigator
+                initialRoute={{ name: "TodoDetail", component: TodoDetail }}
+                renderScene={(route, navigator) => {
+                  let Component = route.component;
+                  return <Component gogo = {route.gogo} params = {route.params} navigator={navigator} />
+            }} />
         );
     }
 }
@@ -58,16 +46,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   fuckyou:{
-
       borderColor: "red",
       borderStyle: "solid",
       borderWidth: 3,
       backgroundColor: "gray"
   },
   textStyles:{
-      color: "green",
+      color: "lime",
       textAlign: "center",
-      fontSize: 25
+      fontSize: 12
   },
   welcome: {
     fontSize: 20,
