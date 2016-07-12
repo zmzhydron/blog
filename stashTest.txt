@@ -1,0 +1,10 @@
+this is stashtest!!
+
+oops
+
+reset one
+stash 1
+
+did again
+
+thinking out loud
