@@ -1,7 +1,6 @@
 'use strict';
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 export default class Todo extends React.Component{
     constructor(props){
         super();
@@ -75,7 +74,7 @@ export default class Todo extends React.Component{
         this.compiled = compiled;
         var editTodoClass = this.isClassActive ?  "editTodo active" : "editTodo";
         var todoClassName = "todoItem " + (display === 'block' ? 'block' : display);
-        var contentClass = "todoContent " + (this.isContentActive ? "active" : ""); 
+        var contentClass = "todoContent " + (this.isContentActive ? "active" : "");
         return (
             <div className={ todoClassName } ref="todoItem">
                 <div className="todoTitleCtn">

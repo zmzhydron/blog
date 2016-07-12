@@ -29,7 +29,7 @@ body{
 		justify-content:space-around;
 		@include underline();
 		flex-flow:row nowarp;
-		span{	
+		span{
 			display:inline-block;
 		}
 		.todoTitle{
@@ -110,32 +110,21 @@ body{
 
 .test-enter{
 	opacity:0.01;
-	transition: all ease-in 111500ms;
+	background-color:green;
+	transition: all ease-in 50ms;
 }
 .test-enter.test-enter-active{
 	opacity:1;
-	background-color:green;
 }
 .test-leave{
-	opacity:1;
+	opacity:0.01;
+	transition: all ease-in 10000ms;
 	background-color:red;
-	transition: all ease-in 5500ms;
 }
 .test-leave.test-leave-active{
-	opacity:0.01;
-	background-color:yellow;
-	
+	opacity: 1;
+	background-color:red;
 }
 body{
 	background-color: silver;
-}
-.1test-appear {
-  opacity: 0.01;
-
-}
-
-.1test-appear.test-appear-active {
-	background-color:red;
-  	opacity: 1;
-  	transition: opacity .5s ease-in;
 }

@@ -1,7 +1,7 @@
 'use strict';
 import React from "react";
 import Todo from "./todo";
-import Animationss from "react-addons-css-transition-group";
+import Animations from "react-addons-css-transition-group";
 export default class Todos extends React.Component{
 	constructor(){
 		super();
@@ -14,9 +14,9 @@ export default class Todos extends React.Component{
 		})
 		return (
 		<div className = "todoListCtn">
-			<Animationss transitionName="test"  transitionEnterTimeout={2000} transitionLeaveTimeout={3000}>
+			<Animations transitionName="test"  transitionEnterTimeout={5500} transitionLeaveTimeout={5500}>
 				{ todolist }
-			</Animationss>
+			</Animations>
 		</div>
 		)
 	}
