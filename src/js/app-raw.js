@@ -36,8 +36,10 @@ var FUCKER = store => next => action =>{
 	// return result;
 }
 
-var makeMiddleWare = applyMiddleware(logger,FUCKER)(createStore);
-var store = makeMiddleWare(TodoReducer);
+// var makeMiddleWare = applyMiddleware(logger,FUCKER)(createStore);
+// var store = makeMiddleWare(TodoReducer);
+var makeMiddleWare = applyMiddleware(logger,FUCKER);
+var store = createStore(TodoReducer, makeMiddleWare);
 const appHtml = document.getElementById('app');
 // console.log(adlinks);
 window.onpopstate = function(e){
