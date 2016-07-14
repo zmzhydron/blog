@@ -33,9 +33,50 @@
             console.log(meme.replace(/(?=(?!\b)\w{2}$)/g,','));
             console.log(a.replace(ass,','));
             var ip = '0.0.0.0';
-            console.log(ipe.test(ip));
-            // console.log("abcdef".replace(/(?=\w{2}$)/g,"@"));
-            // console.log(b.match(/([\u4e00-\u9fa5])\1+/g))；
+            var a1 = (x) => "Mr "+ x;
+            var a2 = (x) => "hi!! " + x;
+            var a3 = (x) => x+ " welcome to";
+            var a4 = (x) => x+ " china!!";
+            var a5 = (x) => 'fuck you',x;
+            // var greedy = (...fns) => (name) =>{
+            //     console.log(fns);
+            //     return fns.reduce((a,b,c) => {
+            //         console.log(a,c);
+            //         if(c === 1){
+            //             return b(a(name));
+            //         }else{
+            //             return b(a);
+            //         }
+            //     });
+            // }
+            var greedy = (...fns) => (name) =>{
+                console.log(fns);
+                return fns.reduce((a,b,c) => {
+                    return b(a);
+                },name);
+            }
+            console.log(greedy(a1,a2,a3,a4)('zhangmingzhi'));
+            console.log(a5('zmz'));
+            var aryts = [1,2,3,4,5,6,7];
+            aryts.reduce( (a,b,c) => {
+                console.log(a,b,c);
+                return a + b;
+            })
+            var oos = {
+                hi: function(x){
+                    console.log(x);
+                    return this;
+                },
+                welcome: function(x){
+                    console.log(x);
+                    return this;
+                },
+                bye: function(x){
+                    console.log(x);
+                    return this;
+                },
+            }
+            oos.hi(1).welcome(2).bye(3);
         }();
     </script>
 </head>
