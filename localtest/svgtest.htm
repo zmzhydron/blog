@@ -4,21 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-<<<<<<< HEAD
 </head>
 
 <body>
-    <svg width="580" height="400" style="position:absolute; top:100px; left:100px; border:solid 1px black" xmlns="http://www.w3.org/2000/svg">
-    	<path id='my' d="
-                        M100 100
-                        L100 100
-                        L114 140
-                        Q100 130 86 140
-                        L100 100
-        " 
-    	stroke="red" stroke-width="2" fill="transparent"/>
-    </svg>
-=======
     <script>
         var a = 'zhangming张张明明之之之zhiisd12社@@@保345ashabi';
         var b = '123444444444567';
@@ -48,57 +36,22 @@
             console.log(meme.replace(/(?=(?!\b)\w{2}$)/g,','));
             console.log(a.replace(ass,','));
             var ip = '0.0.0.0';
-            var a1 = (x) => "Mr "+ x;
-            var a2 = (x) => "hi!! " + x;
-            var a3 = (x) => x+ " welcome to";
-            var a4 = (x) => x+ " china!!";
-            var a5 = (x) => 'fuck you',x;
-            // var greedy = (...fns) => (name) =>{
-            //     console.log(fns);
-            //     return fns.reduce((a,b,c) => {
-            //         console.log(a,c);
-            //         if(c === 1){
-            //             return b(a(name));
-            //         }else{
-            //             return b(a);
-            //         }
-            //     });
-            // }
-            var greedy = (...fns) => (name) =>{
-                console.log(fns);
-                return fns.reduce((a,b,c) => {
-                    return b(a);
-                },name);
+            var upper = (str) =>{
+                return str.toUpperCase();
             }
-            console.log(greedy(a1,a2,a3,a4)('zhangmingzhi'));
-            console.log(a5('zmz'));
-            var aryts = [1,2,3,4,5,6,7];
-            aryts.reduce( (a,b,c) => {
-                console.log(a,b,c);
-                return a + b;
-            })
-            var oos = {
-                hi: function(x){
-                    console.log(x);
-                    return this;
-                },
-                welcome: function(x){
-                    console.log(x);
-                    return this;
-                },
-                bye: function(x){
-                    console.log(x);
-                    return this;
-                },
+            var sayHi = (str) =>{
+                return `hello: ${str}`;
             }
-            oos.hi(1).welcome(2).bye(3);
+            function compose(...fns){
+                return function(params){
+                    return fns.reduce((a,b) => b(a),params);
+                }
+            }
+            var fin = compose(sayHi,upper);
+            console.log(fin);
+            console.log(fin("zhangmingzhi"));
         }();
     </script>
-</head>
-
-<body>
-
->>>>>>> 18f00f3e9e417f8571a066927e4df84624949583
 </body>
 
 </html>
