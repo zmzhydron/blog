@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server "
+    "start": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
@@ -82,6 +82,7 @@
       "start": "webpack-dev-server "
     },
     "style-loader": "*",
+    "underscore": "^1.8.3",
     "version": "1.0.0",
     "webpack": "*",
     "webpack-dev-server": "^1.14.1"

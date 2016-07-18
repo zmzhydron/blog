@@ -1,8 +1,8 @@
 module.exports = {
-	entry:["./src/js/app-raw.js"],
+	entry:["./app.js"],
 	output:{
 		path:__dirname,
-		filename:"./src/js/app.js"
+		filename:"./app_bunlde.js"
 	},
 	module:{
 		loaders:[

@@ -1,52 +1,22 @@
 'use strict'
 import React from "react";
-import ReactDom from "react-dom";
-import { Router, Route, IndexRoute, hashHistory, Link, browserHistory } from "react-router";
-import Todos from "./widgets/todos.js";
-import AddTodo from "./widgets/addTodo.js";
-import Calender from "./widgets/calender/calender.js";
-import AD from "./widgets/AD.js";
-// import Store from './flux-store.js';
-// import Actions from "./flux-actions.js";
-import * as Actions from "./redux-actions.js";
-import { createStore, applyMiddleware } from 'redux';
-import TodoReducer from './redux-reducer.js';
-import { Provider } from "react-redux";
-
-import adlinks from './JSON/test.js';
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import ReactDom from "react-dom"
+import { Router, Route, IndexRoute, hashHistory, Link, browserHistory } from "react-router"
+import Todos from "./widgets/todos.js"
+import AddTodo from "./widgets/addTodo.js"
+import Calender from "./widgets/calender/calender.js"
+import AD from "./widgets/AD.js"
+import * as Actions from "./redux-actions.js"
+import store from './redux-store.js'
+import TodoReducer from './redux-reducer.js'
+import { Provider } from "react-redux"
+import adlinks from './JSON/test.js'
+import ReactCSSTransitionGroup from "react-addons-css-transition-group"
 // load css
-import css from "./../css/app.scss";
-/*
-	load middleware
-*/
-var logger = store => next => action =>{
-	console.log('loggerloggerloggerloggerloggerloggerloggerlogge: ',action);
-	// var result = next(action);
-	console.log('next state is : ',store.getState());
-	// console.log(store.dispatch(action));
-	// return result;
-	next(action);
-	// store.dispatch(action);
-}
-var FUCKER = store => next => action =>{
-	console.log('FUCKERFUCKERFUCKERFUCKERFUCKER ',action);
-	// var result = next(action);
-	next(action);
-	// return result;
-}
-
-// var makeMiddleWare = applyMiddleware(logger,FUCKER)(createStore);
-// var store = makeMiddleWare(TodoReducer);
-var makeMiddleWare = applyMiddleware(logger,FUCKER);
-var store = createStore(TodoReducer, makeMiddleWare);
+import css from "./../css/app.scss"
 const appHtml = document.getElementById('app');
 // console.log(adlinks);
 window.onpopstate = function(e){
-	// console.log(e);
-	// console.log(window.history);
-	// console.log(`@@@@@@@@@@@@@`)
-	//
 }
 import Animationss from "react-addons-css-transition-group";
 class App extends React.Component{
@@ -114,32 +84,9 @@ class App extends React.Component{
 	componentDidUpdate (){
 	    // console.log('APP componentDidUpdate ');
 	}
-	// deleteCallBack(){
-	// 	// console.log(Store.getAllTodos());
-	// 	this.setState({todoJSON: Store.getAllTodos()})
-	// }
-	// checkCallBack(){
-	// 	this.setState({todoJSON: Store.getAllTodos()})
-	// }
-	// updateCallBack(){
-	// 	this.setState({todoJSON: Store.getAllTodos()})
-	// }
 	setsasa(e){
 		var history = window.history;
 		history.pushState({type: "doggy"},'fuck you','#/AD/shittttt?me=siwazi&age=222222222');
-		// var type = e.target.getAttribute('data-id');
-		// switch(type){
-		// 	case "AD":
-		// 		history.pushState({name: "AD"},"","#/" + type);
-		// 	break;
-		// 	case "calender":
-		// 		history.pushState({name: "calender"},"","#/" + type);
-		// 	break;
-		// }
-	}
-	replaceState(e){
-		// window.history.replaceState({name: "fuck that ass"},"daass!!","#/fuckthatass!!!");
-
 	}
 	changeLocation(){
 		window.location.href = 'http://localhost:8080/src/page/app.htm#/AD/shittttt?me=siwazi&age=111111111';
@@ -196,7 +143,6 @@ class App extends React.Component{
 		)
 	}
 }
-
 ReactDom.render(
 	<Router history={hashHistory}>
 		<Route path="/" component={App}>
