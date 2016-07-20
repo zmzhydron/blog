@@ -62,6 +62,8 @@ var reducerWrapper = (initalstate, fns) => {
 }
 var todoReducer = reducerWrapper(defaultState, {
 	ADDTODO: (state,action) =>{
+		var newState = state.concat([action.value]);
+		newState === state;
 		return state.concat([action.value]);
 	},
 	DELETETODO: (state,action) =>{

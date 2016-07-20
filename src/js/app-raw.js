@@ -9,7 +9,8 @@ import AD from "./widgets/AD.js"
 import * as Actions from "./redux-actions.js"
 import store from './redux-store.js'
 import TodoReducer from './redux-reducer.js'
-import { Provider } from "react-redux"
+import { Provider, connect } from "react-redux"
+import { bindActionCreators } from 'redux'
 import adlinks from './JSON/test.js'
 import ReactCSSTransitionGroup from "react-addons-css-transition-group"
 // load css
@@ -19,33 +20,40 @@ const appHtml = document.getElementById('app');
 window.onpopstate = function(e){
 }
 import Animationss from "react-addons-css-transition-group";
+
+var deletetodos = (value) => {
+	console.log(value,"  $$$$$$$$$$$$");
+	return (dispatch) =>{
+		console.log(value);
+		console.log(dispatch);
+		return dispatch({"type": "DELETETODO","index": 1});
+	}
+}
+@connect((state) =>{
+	console.log(`state`);
+	console.log(state);
+	return {
+		todoJSON: state.todoJSON,
+		name: "zmz"
+	}
+},(dispatch) =>{
+	console.log(dispatch);
+	// return {};
+	return {
+		deleteTodo: bindActionCreators(deletetodos,dispatch)
+	}
+})
 class App extends React.Component{
 	constructor(props){
 		super();
-		// this.state = Object.assign({},props,{todoJSON: Store.getAllTodos()});
 		this.state = store.getState();
 		this.fuckCount = 0;
 	}
 	componentWillMount(){
-		store.subscribe(()=>{
-			this.setState({
-				todoJSON: store.getState().todoJSON,
-				names: "fuck zmz"
-			})
-		})
 		this.setState({
 			names:" fuckZMZ!!",
 			classe: "test-enter"
 		})
-		setTimeout(() =>{
-			this.setState({
-				names:" fuck you!!!!!!",
-				classe: "test-enter test-enter-active"
-			})
-		},2000);
-		// Store.register('CHECKTODO',this.checkCallBack.bind(this));
-		// Store.register('DELETETODO',this.deleteCallBack.bind(this));
-		// Store.register('UPDATETODO',this.updateCallBack.bind(this));
 	}
 	componentWillReciveProps(newProps){
 		// console.log("componentWillReciveProps  app-raw",newProps);
@@ -65,7 +73,9 @@ class App extends React.Component{
 	}
 	delete(index,todoObj){
 		// Actions.DELETETODO(index);
-		store.dispatch(Actions.DELETETODO(index));
+		// store.dispatch(Actions.DELETETODO(index));
+		console.log(this.props.deleteTodo);
+		this.props.deleteTodo(index)();
 		//当删除了一个todo的时候，将其内容隐藏，并强制刷新 @2016-5-2；
 		todoObj.isContentActive = false;
 		todoObj.forceUpdate();
@@ -92,7 +102,7 @@ class App extends React.Component{
 		window.location.href = 'http://localhost:8080/src/page/app.htm#/AD/shittttt?me=siwazi&age=111111111';
 	}
 	render(){
-		var {todoJSON:todoJSON} = this.state;
+		var {todoJSON:todoJSON} = this.props;
 		var functions = {
 			check:this.check.bind(this),
 			update: this.update.bind(this),
@@ -115,7 +125,7 @@ class App extends React.Component{
 			var ref = "ad" + index;
 			return <Link to={temp} key={index}><button ref={ref} style={ADStyle}>AD!!</button></Link>
 		})
-
+		console.log(this);
 
 		// 调试historty的按钮
 		// <button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
@@ -144,10 +154,12 @@ class App extends React.Component{
 	}
 }
 ReactDom.render(
+	<Provider store={store}>
 	<Router history={hashHistory}>
 		<Route path="/" component={App}>
 			<Route path="/calender" component={Calender} />
 			<Route path="/AD/:fuck" component={AD} />
 		</Route>
 	</Router>
+	</Provider>
 	,appHtml);
