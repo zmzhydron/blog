@@ -23,22 +23,15 @@ import Animationss from "react-addons-css-transition-group";
 
 var deletetodos = (value) => {
 	console.log(value,"  $$$$$$$$$$$$");
-	return (dispatch) =>{
-		console.log(value);
-		console.log(dispatch);
-		return dispatch({"type": "DELETETODO","index": 1});
-	}
+	return {"type": "DELETETODO","index": value}
 }
-@connect((state) =>{
-	console.log(`state`);
-	console.log(state);
+@connect((store) =>{
 	return {
-		todoJSON: state.todoJSON,
+		todoJSON: store.todoJSON,
 		name: "zmz"
 	}
 },(dispatch) =>{
 	console.log(dispatch);
-	// return {};
 	return {
 		deleteTodo: bindActionCreators(deletetodos,dispatch)
 	}
@@ -46,8 +39,6 @@ var deletetodos = (value) => {
 class App extends React.Component{
 	constructor(props){
 		super();
-		this.state = store.getState();
-		this.fuckCount = 0;
 	}
 	componentWillMount(){
 		this.setState({
@@ -56,10 +47,9 @@ class App extends React.Component{
 		})
 	}
 	componentWillReciveProps(newProps){
-		// console.log("componentWillReciveProps  app-raw",newProps);
+		console.log("componentWillReciveProps  app-raw",newProps);
 	}
 	componentDidMount(){
-		// console.log(` all my children!! : ${this.props.children} `);
 		var ad = this.refs.ad1;
 		// console.log(this.refs);
 		var a = ad.parentNode;
@@ -72,10 +62,7 @@ class App extends React.Component{
 		store.dispatch(Actions.CHECKTODO(index));
 	}
 	delete(index,todoObj){
-		// Actions.DELETETODO(index);
-		// store.dispatch(Actions.DELETETODO(index));
-		console.log(this.props.deleteTodo);
-		this.props.deleteTodo(index)();
+		this.props.deleteTodo(index);
 		//当删除了一个todo的时候，将其内容隐藏，并强制刷新 @2016-5-2；
 		todoObj.isContentActive = false;
 		todoObj.forceUpdate();
@@ -102,7 +89,7 @@ class App extends React.Component{
 		window.location.href = 'http://localhost:8080/src/page/app.htm#/AD/shittttt?me=siwazi&age=111111111';
 	}
 	render(){
-		var {todoJSON:todoJSON} = this.props;
+		var {todoJSON:todoJSONs} = this.props;
 		var functions = {
 			check:this.check.bind(this),
 			update: this.update.bind(this),
@@ -147,7 +134,7 @@ class App extends React.Component{
 				</div>
 				<AddTodo fun={this.add.bind(this)}/>
 					<ReactCSSTransitionGroup  transitionName="gogo" transitionEnterTimeout={1500} transitionLeaveTimeout={1300}>
-						<Todos data = { todoJSON } fns = {functions}/>
+						<Todos data = { todoJSONs } fns = {functions}/>
 					</ReactCSSTransitionGroup>
 			</div>
 		)
@@ -155,11 +142,12 @@ class App extends React.Component{
 }
 ReactDom.render(
 	<Provider store={store}>
-	<Router history={hashHistory}>
-		<Route path="/" component={App}>
-			<Route path="/calender" component={Calender} />
-			<Route path="/AD/:fuck" component={AD} />
-		</Route>
-	</Router>
-	</Provider>
+   		<App />
+ 	</Provider>
 	,appHtml);
+	// <Router history={hashHistory}>
+	// 	<Route path="/" component={App}>
+	// 		<Route path="/calender" component={Calender} />
+	// 		<Route path="/AD/:fuck" component={AD} />
+	// 	</Route>
+	// </Router>
