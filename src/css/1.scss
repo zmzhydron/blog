@@ -1,0 +1,12 @@
+$color: gray;
+$size: size;
+$fontSize: 32px;
+@mixin round($roundSize: 50%,$color: pink,$width: 3px){
+	border-radius: $roundSize;
+	border: solid $width $color;
+}
+h1{
+	background-color: $color;
+	font-#{$size}: $fontSize;
+	@include round();
+}

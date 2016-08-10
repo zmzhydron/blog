@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 'zhangming张张明明之之之zhiisd12社@@@保345ashabi';
+        var b = '123444444444567';
+        var e = /([\u4e00-\u9fa5]+)([\u4e00-\u9fa5]+)([\u4e00-\u9fa5]+)/g;
+        var t = /(?=(?!\b)(\d{3})+$)/g;
+        var q = /(?=zhi)+/g;
+        console.log("zmz".replace(/zm\b/,"#"));
+        console.log(/z\b/.exec("zmz"));
+        console.log(b.replace(t,","));
+
+
+        var a = '<ul class="ui-list club-list"><li data-tjposition="23|5|2|1|5"><a href="http://club.autohome.com.cn/bbs/thread-c-2268-53674432-1.html#pvareaid=100702">腰线堪称完美 家家商城提卡缤1.2T</a></li><li data-tjposition="23|5|2|1|6"><a href="http://club.autohome.com.cn/bbs/thread-c-403-52499509-1.html#pvareaid=100702">为老爸精挑细选 提雷克萨斯ES300h</a></li><li data-tjposition="23|5|2|1|7"><a href="http://club.autohome.com.cn/bbs/thread-c-2949-53743010-1.html#pvareaid=100702">内饰豪华动力澎湃 凯迪拉克XTS提车</a></li><li data-tjposition="23|5|2|1|8"><a href="http://club.autohome.com.cn/bbs/thread-c-3185-53741541-1.html#pvareaid=100702">居家实用派不二选 锋驭选购车历程</a></li></ul>';
+        var e = /<(.+?)>/g;
+        var ee = /(?= =(?=".+?"))/g;
+        var es = /(?=(.+=))".*?"/g;
+        var gs = /<(.*?)>/g;
+        console.log(a.match(es));
+        console.log(a.replace(gs,""));
+        +function(){
+            var a = '123453453425234@494912345678';
+            var b = '1234你你好hello世世世世界woRld我是神经病，我是我神经病我i爱爱神经病爱<b>神经病love<b>神经病you</b></b>你"you"';
+            var f = /\b\w/g;
+            var ff = /<\w>(?!<\w>).*?<\/\w>/;
+            var ass = /(?=(?!\b)(\d{3})+\D|$(?!\b))/g;
+            var meme = "abcd";
+            var ipe = /^(([01]?\d?\d|2[0-5][0-5])\.){3}([01]?\d?\d|2[0-5][0-5])$/;
+            console.log(meme.replace(/(?=(?!\b)\w{2}$)/g,','));
+            console.log(a.replace(ass,','));
+            var ip = '0.0.0.0';
+            var upper = (str) =>{
+                return str.toUpperCase();
+            }
+            var sayHi = (str) =>{
+                return `hello: ${str}`;
+            }
+            function compose(...fns){
+                return function(params){
+                    return fns.reduce((a,b) => b(a),params);
+                }
+            }
+            var fin = compose(sayHi,upper);
+            console.log(fin);
+            console.log(fin("zhangmingzhi"));
+        }();
+        function hehe(...a){
+            console.log(a);
+        }
+        hehe(1,2,3)
+    </script>
+</body>
+
+</html>
