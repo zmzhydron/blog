@@ -1,0 +1,50 @@
+$red : red;
+@mixin boxshadow($x:0rem,$y:1.25rem,$blur:1.25rem,$radius:-1.25rem){
+	box-shadow: $x $y $blur $radius rgba(255,123,075,0.5);
+}
+@media screen and (max-width:1650px){
+	html{
+		font-size:100%;
+	}
+}
+@media screen and (min-width:1651px){
+	html{
+		font-size:150%;
+	}
+}
+#a{
+	height: 3.125rem;
+	width: 12.5rem;
+	background-color: blue;
+	color: white;
+
+	top:6.25rem;
+	left:6.25rem;
+	line-height: 3.125rem;
+	text-align: center;
+	transition: all linear 0.5s;
+	@include boxshadow(0rem,1.25rem,1.25rem,-0.75rem);
+	
+}
+#a:hover{
+	@include boxshadow(0rem,1.75rem,2.5rem,-1.25rem);
+	transform: translate(10rem,1.25rem);
+}
+#b,#c,#d{
+	height: 3rem;
+	background-color: gray;
+	margin-top: 5px;
+	color: red;
+	font-size: 1.5rem;
+}
+#rect{
+	/*transform: rotate(30deg);*/
+	fill: green;
+}
+#svg{
+	position: absolute;
+	top: 100px;
+	left: 500px;
+	width: 300px;
+	height: 300px;
+}

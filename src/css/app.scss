@@ -1,0 +1,130 @@
+@mixin border($color:lime,$width:2px,$style:dashed){
+	border:$style $width $color;
+	border-radius:5px;
+}
+@mixin underline($color:gray){
+	border-bottom:solid 1px $color
+}
+body{
+	background-color:silver;
+}
+.todoListCtn{
+	width:1000px;
+	height:auto;
+	margin:10px;
+	padding:10px;
+	margin-left:20px;
+	box-shadow:5px 5px 5px 10px red,-5px -5px 5px 10px green;
+	box-shadow:0px 0px 10px red;
+}
+.todoItem{
+	display:block;
+	width:999px;
+	color:gray;
+	margin:5px 0px;
+	@include border($color:red,$style:solid);
+	.todoTitleCtn{
+		width:100%;
+		display:flex;
+		justify-content:space-around;
+		@include underline();
+		flex-flow:row nowarp;
+		span{
+			display:inline-block;
+		}
+		.todoTitle{
+			width:auto;
+			flex:1 1 auto;
+			text-align:center;
+			line-height:48px;
+		}
+		.todoTitleDelete{
+			width:50px;
+			background-color:green;
+			font-size:48px;
+			text-align:center;
+			font-weight:bold;
+		}
+	}
+	.todoContent{
+		width:100%;
+		display:none;
+		background-color:yellow;
+		flex-flow:column nowrap;
+		.todoInfo{
+			text-indent: 35px;
+			padding: 10px 0;
+			@include underline();
+		}
+		.todoControl{
+			display:flex;
+			flex-flow:row nowrap;
+			justify-content:space-around;
+			align-items:center;
+			width:350px;
+			padding: 5px 0px;
+			button{
+				height:25px;
+				width:51px;
+			}
+			button:nth-child(1){
+				color:green;
+			}
+			button:nth-child(2){
+				color:purple;
+			}
+			button:nth-child(3){
+				color:red;
+			}
+		}
+		.editTodo{
+			display:none;
+		}
+		.editTodo.active{
+			display:flex;
+		}
+		.editTodo p{
+			display:flex;
+			align-items: flex-start;
+		}
+	}
+	.todoContent.active{
+		display: flex;
+	}
+}
+.todoItem.flex{
+	display: block;
+}
+.todoItem.none{
+	display: none;
+}
+#deleteBtn{
+	order:2;
+}
+#checkBtn{
+	order:1;
+}
+#editBtn{
+	order:0;
+}
+
+.test-enter{
+	opacity:0.01;
+	background-color:green;
+	transition: all ease-in 50ms;
+}
+.test-enter.test-enter-active{
+	opacity:1;
+}
+.test-leave{
+	opacity:0.01;
+	transition: all ease-in 10000ms;
+	background-color:red;
+}
+.test-leave.test-leave-active{
+	opacity: 1;
+	background-color:red;
+}
+body{
+	background-color: silver;
+}
