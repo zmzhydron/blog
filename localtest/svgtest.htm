@@ -51,57 +51,10 @@
             console.log(fin);
             console.log(fin("zhangmingzhi"));
         }();
-        +function(){
-            var sum = (num) => {
-                if(num === 0){
-                    return num;
-                }
-                return num + sum(--num);
-            }
-            var countdown = num => {
-                if(num < 0){
-                    return;
-                }
-                console.log(`current num is ${num}`);
-                countdown(--num);
-            }
-            // countdown(5);
-            // console.log(sum(7));
-            var objs = [
-                {name:'zmz',parent:'god'},
-                {name:'goudan',parent:'zmz'},
-                {name:'dangou',parent:'zmz'},
-                {name:'goudanone',parent:'goudan'},
-                {name:'dangouone',parent:'dangou'},
-                {name:'goudantwo',parent:'goudanone'},
-                {name:'goudanthree',parent:'goudantwo'},
-                {name:'dangoutwo',parent:'dangouone'},
-                {name:'dangouthree',parent:'dangoutwo'}
-            ]
-            var maketree = (obj, prop) =>{
-                var node = {};
-                var core = (obj, prop, node) => {
-                    obj.map((item,index) =>{
-                        if(item.parent === prop){
-                            node[item.name] = {
-                                name: item.name,
-                                parent: item.parent,
-                                sons: {}
-                            }
-                            core(obj,item.name,node[item.name].sons);
-                        }
-                    });
-                }
-                core(obj, prop, node);
-                return node;
-
-            };
-            var r = maketree(objs,'god');
-            console.log(r,a);
-            console.log(JSON.stringify(r,(x) =>{
-                console.log(x);
-            },4));
-        }();
+        function hehe(...a){
+            console.log(a);
+        }
+        hehe(1,2,3)
     </script>
 </body>
 

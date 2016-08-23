@@ -1,29 +1,25 @@
 'use strict'
 import React from "react"
+<<<<<<< HEAD
 import One from "./widget/one.js"
 import Two from "./widget/two.js"
 import Three from "./widget/three.js"
 import Four from "./widget/four.js"
 import { Router, Route, IndexRoute, hashHistory, Link, browserHistory } from "react-router"
+=======
+>>>>>>> 118e7088080981d7cd76f05fbd77d74e2dce9dea
 export default class App extends React.Component{
-	constructor(props){
+	constructor(){
 		super();
-		this.state = {
-			todos: props.todos
-		};
-		this.datas = props.todos;
 	}
 	componentWillMount(){
-
-	}
-	componentDidMount(){
-
 	}
 	addTodo(){
 		this.props.addtodos({
 			type: "ADDTODO",
 			value: "zhangmingzhi4947"
 		});
+<<<<<<< HEAD
 		// this.setState({
 		// 	todoss: Math.random()
 		// })
@@ -54,5 +50,14 @@ export default class App extends React.Component{
 				</Route>
 			</Router>
 		)
+=======
+	}
+	render() {
+		console.log(this);
+		return <div>
+			<h1>{this.props.name}~~~</h1>
+			<button onClick={this.addTodo.bind(this)}>addtodo</button>
+		</div>
+>>>>>>> 118e7088080981d7cd76f05fbd77d74e2dce9dea
 	}
 }

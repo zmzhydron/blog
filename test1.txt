@@ -29,6 +29,3 @@ https://www.zhihu.com/question/41363194
 
 
 https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch5.html
-
-
-https://leeon.gitbooks.io/devtools/content/learn_basic/tips_and_tricks_part_console.html

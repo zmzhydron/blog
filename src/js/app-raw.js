@@ -25,15 +25,20 @@ var deletetodos = (value) => {
 	console.log(value,"  $$$$$$$$$$$$");
 	return {"type": "DELETETODO","index": value}
 }
+var changeName = (val) => {
+	return {"type": "CHANGENAME","name": val}
+}
 @connect((store) =>{
 	return {
 		todoJSON: store.todoJSON,
-		name: "zmz"
+		name: "zmz",
+		myname: store.myname
 	}
 },(dispatch) =>{
 	console.log(dispatch);
 	return {
-		deleteTodo: bindActionCreators(deletetodos,dispatch)
+		deleteTodo: bindActionCreators(deletetodos, dispatch),
+		changeName: bindActionCreators(changeName, dispatch)
 	}
 })
 class App extends React.Component{
@@ -50,12 +55,12 @@ class App extends React.Component{
 		console.log("componentWillReciveProps  app-raw",newProps);
 	}
 	componentDidMount(){
-		var ad = this.refs.ad1;
-		// console.log(this.refs);
-		var a = ad.parentNode;
-		setTimeout(() =>{
-			a.setAttribute('href',"#AD/blowjob?me=dashabi&age=16");
-		},1000);
+		// var ad = this.refs.ad1;
+		// // console.log(this.refs);
+		// var a = ad.parentNode;
+		// setTimeout(() =>{
+		// 	a.setAttribute('href',"#AD/blowjob?me=dashabi&age=16");
+		// },1000);
 	}
 	check(index,state){
 		// Actions.CHECKTODO(index);
@@ -88,7 +93,11 @@ class App extends React.Component{
 	changeLocation(){
 		window.location.href = 'http://localhost:8080/src/page/app.htm#/AD/shittttt?me=siwazi&age=111111111';
 	}
+	changeNames(){
+		this.props.changeName("zmz4947888")
+	}
 	render(){
+		console.log(this);
 		var {todoJSON:todoJSONs} = this.props;
 		var functions = {
 			check:this.check.bind(this),
@@ -112,10 +121,11 @@ class App extends React.Component{
 			var ref = "ad" + index;
 			return <Link to={temp} key={index}><button ref={ref} style={ADStyle}>AD!!</button></Link>
 		})
-		console.log(this);
+		
 
 		return (
 			<div>
+				<h1 onClick={this.changeNames.bind(this)}>{this.props.myname.name}</h1>
 				<h1>{name}
 					<Link to="calender"><button data-id='calender' ref='calender' style={buttonStyle}>CALENDER</button></Link>
 					<button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
@@ -129,8 +139,9 @@ class App extends React.Component{
 				<span>todoFilter:</span><input onChange={this.filterTodo.bind(this)} placeholder = "entery your todo here"/>
 				</div>
 				<AddTodo fun={this.add.bind(this)}/>
+				<Todos data = { todoJSONs } fns = {functions}/>
 					<ReactCSSTransitionGroup  transitionName="gogo" transitionEnterTimeout={1500} transitionLeaveTimeout={1300}>
-						<Todos data = { todoJSONs } fns = {functions}/>
+						
 					</ReactCSSTransitionGroup>
 			</div>
 		)
@@ -138,16 +149,20 @@ class App extends React.Component{
 }
 ReactDom.render(
 	<Provider store={store}>
+<<<<<<< HEAD
    <Router history={hashHistory}>
    	<Route path="/" component={App}></Route>
    	<Route path="/calender" component={Calender} />
    	<Route path="/AD/:fuck" component={AD} />
    </Router>
+=======
+	<Router history={hashHistory}>
+		<Route path="/" component={App}>
+			<Route path="/calender" component={Calender} />
+			<Route path="/AD/:fuck" component={AD} />
+		</Route>
+	</Router>
+>>>>>>> 118e7088080981d7cd76f05fbd77d74e2dce9dea
  	</Provider>
 	,appHtml);
-	// <Router history={hashHistory}>
-	// 	<Route path="/" component={App}>
-	// 		<Route path="/calender" component={Calender} />
-	// 		<Route path="/AD/:fuck" component={AD} />
-	// 	</Route>
-	// </Router>
+
