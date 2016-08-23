@@ -1,6 +1,10 @@
 'use strict'
 import React from "react"
-import Test from "./widget/one.js"
+import One from "./widget/one.js"
+import Two from "./widget/two.js"
+import Three from "./widget/three.js"
+import Four from "./widget/four.js"
+import { Router, Route, IndexRoute, hashHistory, Link, browserHistory } from "react-router"
 export default class App extends React.Component{
 	constructor(props){
 		super();
@@ -25,10 +29,10 @@ export default class App extends React.Component{
 		// })
 	}
 	componentWillReceiveProps(props){
-		this.setState({
-			todos: props.todos
-		});
-		this.datas = this.props.todos;
+		// this.setState({
+		// 	todos: props.todos
+		// });
+		// this.datas = this.props.todos;
 	}
 	shouldComponentUpdate(props,state){
 		return true;
@@ -41,11 +45,14 @@ export default class App extends React.Component{
 		return r;
 	}
 	render() {
-		return <div>
-			<h1>{this.props.name}~~~</h1>
-			<p>{this.renders(this.datas)}</p>
-			<button onClick={this.addTodo.bind(this)}>addtodo</button>
-			<Test />
-		</div>
+		return (
+			<Router history={hashHistory}>
+				<Route path="/" component={Four}>
+					<Route path="/one" component={One}/> 
+					<Route path="/two" component={Two}/> 
+					<Route path="/three" component={Three}/> 
+				</Route>
+			</Router>
+		)
 	}
 }

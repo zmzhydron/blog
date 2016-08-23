@@ -7,8 +7,19 @@ import store from './store.js'
 
 const appContainer = document.getElementById("app");
 
+// React.withContext({'name': 'ZHANGMINGZHI'}, function () {
+//    ReactDom.render(
+//    	<Provider store = {store}>
+//    		<App />
+//    	</Provider>,
+//    	appContainer);
+// });
 ReactDom.render(
 	<Provider store = {store}>
-		<App name={"zhangmingzhi"} />
+		<App />
 	</Provider>,
 	appContainer);
+// React.withContext({'name': 'Jonas'}, function () {
+//     // Outputs: "My name is: Jonas"
+//     React.render(<A />, document.body);
+// });

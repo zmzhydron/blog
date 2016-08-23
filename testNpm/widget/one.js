@@ -1,17 +1,14 @@
 'use strict'
 import React from "react"
 import Two from './two.js'
-
+import { Router, Route, IndexRoute, hashHistory, Link, Lifecycle,  browserHistory } from "react-router"
 const RPT = React.PropTypes;
 
-function Hehe(props){
-	return (
+const Hehe = props =>
 		<div>
-			<h1 onClick={props.clicker} className="sjb">just one test { props.girls}</h1>
-			<div>{props.children}</div>
-		</div>
-	)
-}
+			<h1 onClick={props.clicker} className="sjb">{props.children}</h1>
+		</div>;
+
 Hehe.propTypes = {
 	girls: RPT.oneOfType([RPT.string,RPT.number])
 }
@@ -35,9 +32,7 @@ export default class One extends React.Component{
 		}
 		var Abc = <Two fuckname={11234} />;
 		// var N = <Hehe {...PassObj}>{<InnerHTMLs />}</Hehe>;
-		var N = <Hehe {...PassObj}>{Abc}</Hehe>;
-		console.log(N);
-		console.log(Abc)
+		var N = <Hehe>fuck you</Hehe>;
 		return N;
 	}
 }

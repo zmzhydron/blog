@@ -114,10 +114,6 @@ class App extends React.Component{
 		})
 		console.log(this);
 
-		// 调试historty的按钮
-		// <button data-id="AD" onClick={this.setsasa.bind(this)}>pushADState</button>
-		// <button data-id="calender" onClick={this.setsasa.bind(this)}>pushCalenderState</button>
-		// <button onClick={this.changeLocation.bind(this)}>changeLocation</button>
 		return (
 			<div>
 				<h1>{name}
@@ -142,7 +138,11 @@ class App extends React.Component{
 }
 ReactDom.render(
 	<Provider store={store}>
-   		<App />
+   <Router history={hashHistory}>
+   	<Route path="/" component={App}></Route>
+   	<Route path="/calender" component={Calender} />
+   	<Route path="/AD/:fuck" component={AD} />
+   </Router>
  	</Provider>
 	,appHtml);
 	// <Router history={hashHistory}>
