@@ -96,6 +96,17 @@ var TodoReducer = createReducer(todoJSON,{
 		return [data,...state];
 	}
 })
+var myName = (state = {name:"zhangmingzhi4947"},action) => {
+	
+	if(action.type === "CHANGENAME"){
+		console.log(action);
+		var a = Object.assign({},state,{name: action.name});
+		console.log(a);
+		return a
+	}
+	return state;
+}
 export default combineReducers({
-    todoJSON: TodoReducer
+    todoJSON: TodoReducer,
+    myname: myName
 })

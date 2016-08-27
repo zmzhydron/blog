@@ -41,4 +41,83 @@
 		</div>
 	</div>
 </body>
+<<<<<<< HEAD
+<script type="text/javascript">
+window.onload = function(){
+
+}
+function addTable(){
+	var table = document.getElementById('table');
+	for(var i = 0;i<100;i++){
+		var tr = document.createElement('tr');
+		for(var j = 0; j< 300; j++){
+			var td = document.createElement('td');
+			td.innerHTML = i+":"+j;
+			tr.appendChild(td);
+		}
+		table.appendChild(tr);
+	}
+	document.body.appendChild(table);
+	setTimeout(function(){
+		$("td").bind("click",function(){
+			console.log(this.innerHTML);
+		})
+	},0);
+}
+// addTable();
+var a = {
+	name: 'zmz',
+	$el: 'asdf'
+}
+
+$("#remove").click(function(){
+	$("#table").remove();
+	// asd = null;
+})
+$("#add").click(function(){
+	a.$el = document.getElementById('table');
+})
+
+var p = (callback,val) =>{	
+	return new Promise((resolve, reject) =>{
+		callback(resolve, reject,val);
+	})
+}
+var ps = p((resolve, reject,val) => {
+	setTimeout(()=>{
+		resolve(val + 1000);
+	},1000);
+},10).then((val) =>{
+	return p((resolve, reject,val) => {
+	setTimeout(()=>{
+		resolve(val + 1000);
+	},1000);
+},99);
+}).then((val) =>{
+	console.log(val);
+})
+
+var pps = Promise.resolve(1);
+pps.then((val) =>{
+	return Promise.resolve(val+1);
+}).then((val) =>{
+	console.log(` more :${val}`)
+	return Promise.resolve(val+1);
+}).then((val) =>{
+	console.log(` more :${val}`)
+	return Promise.resolve(val+1);
+})
+
+function* gen(val){
+	const hehe = yield val + 10;
+	console.log(hehe);
+}
+var g = gen(10);
+
+console.log(g.next().value)
+g.next('fuck you');
+
+</script>
+=======
+>>>>>>> 118e7088080981d7cd76f05fbd77d74e2dce9dea
 </html>

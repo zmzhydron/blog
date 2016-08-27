@@ -2,6 +2,7 @@
 import React from "react";
 import Todo from "./todo";
 import Animations from "react-addons-css-transition-group";
+import Test from "./testone.js"
 export default class Todos extends React.Component{
 	constructor(){
 		super();
@@ -17,6 +18,7 @@ export default class Todos extends React.Component{
 			<Animations transitionName="test"  transitionEnterTimeout={5500} transitionLeaveTimeout={5500}>
 				{ todolist }
 			</Animations>
+			<Test/>
 		</div>
 		)
 	}
