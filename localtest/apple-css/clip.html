@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="html2canvas.js"></script>
+	<style type="text/css">
+		#a{
+			/*position: absolute;*/
+			/*-webkit-clip-path: inset(200px 10px 10px 10px);*/
+			/*clip: rect(10px 200px 300px 0px);*/
+		}
+		#b{
+			border: solid 1px red;
+			position: absolute;
+			top: 0px; left: 600px;
+			height: 500px;
+			width: 500px;
+		}
+		#fuckyou{
+			color: red;
+			font-size: 36px;
+			font-family: "微软雅黑";
+			background: green;
+		}
+	</style>
+</head>
+<body>
+<div id="fuckyou">dfsgkljshdfkjghsdfjklhgkljsdfhglhsdfljkghsfjkldh</div>
+	<img src="../gaoxiao.jpg" id="a" />
+	<canvas id='b'></canvas>
+	<div id="hehe"></div>
+</body>
+<script type="text/javascript">
+setTimeout(function(){
+	// hehe();
+},0);
+function hehe(){
+	var ca = document.getElementById('b');
+	var cax = ca.getContext("2d");
+	// var imga = document.getElementById('a');
+	var aa = new Image();
+	aa.src = '../gaoxiao.jpg';
+	console.log(aa);
+	var hehe = document.getElementById('hehe');
+	hehe.innerHTML = aa;
+	setTimeout(function(){
+		cax.drawImage(aa,10,10,150,150);
+		setTimeout(function(){
+			html2canvas(document.getElementById("fuckyou"), {  
+      allowTaint: true,  
+      taintTest: false,  
+      onrendered: function(canvas) {  
+      		debugger;
+          canvas.id = "mycanvas";  
+          // document.body.appendChild(canvas);  
+          //生成base64图片数据  
+          var dataUrl = canvas.toDataURL();  
+          var newImg = document.createElement("img");  
+          newImg.src =  dataUrl;  
+          document.body.appendChild(newImg);  
+        }
+      })
+		},0);
+	},100);
+}
+hehe();
+</script>
+</html>
