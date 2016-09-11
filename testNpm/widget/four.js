@@ -3,7 +3,6 @@ import React from "react"
 import { Router, Route, IndexRoute, hashHistory, Link, Lifecycle,  browserHistory } from "react-router"
 
 export default React.createClass({
-
 	componentDidMount(){
 		// console.log(this.props);
 		// context.router.setRouteLeaveHook(
